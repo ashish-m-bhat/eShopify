@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import Logout from "./Auth/Logout";
 
 export default function NavigationBar() {
-  let userIsLoggedIn = true;
-
+  const [callLogout, setCallLogout] = useState(false);
+  const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
   return (
     <header>
       <Link to="/">
@@ -28,18 +30,19 @@ export default function NavigationBar() {
         </li>
 
         <li>
-        {!userIsLoggedIn && <NavLink to="/auth">Login</NavLink> }
+        {!isUserLoggedIn && <NavLink to="/auth">Login</NavLink> }
         </li>
 
         <li>
-        {userIsLoggedIn && <NavLink to="/profile">Profile</NavLink> }
+        {isUserLoggedIn && <NavLink to="/profile">Profile</NavLink> }
         </li>
 
         <li>
-        {userIsLoggedIn && <button onClick={()=>{}}>Logout</button> }
+        {isUserLoggedIn && <button onClick={()=>setCallLogout(true)}>Logout</button> }
         </li>
 
       </ul>
+      {callLogout && <Logout setCallLogout={setCallLogout}/>}
     </header>
   );
 }

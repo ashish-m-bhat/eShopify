@@ -9,28 +9,33 @@ import ProfilePage from "./Pages/ProfilePage";
 import WomensPage from "./Pages/WomensPage";
 import { Redirect } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
+import { useSelector } from "react-redux";
 
+// Takes the responsibility of setting up routes, some of which depend on the login state
 function App() {
-  // If logged in, /profile is enabled. else redirect to /auth
+  const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
 
-  let userIsLoggedIn = true;
   return (
     <div>
+{/* NavigationBar includes Links to pages*/}
       <NavigationBar />
+
       <Switch>
+
         <Route path="/" exact>
           <HomePage />
         </Route>
+
 {/* If not logged in, display login form, else redirect to profile page */}
         <Route path="/auth">
-          {!userIsLoggedIn && <AuthPage />}
-          {userIsLoggedIn && <Redirect to='/profile' />}
+          {!isUserLoggedIn && <AuthPage />}
+          {isUserLoggedIn && <Redirect to='/' />}
         </Route>
 
 {/* If logged in, display profile page , else redirect to login page */}
       <Route path="/profile">
-        {userIsLoggedIn && <ProfilePage />}
-        {!userIsLoggedIn && <Redirect to='/auth' />}
+        {isUserLoggedIn && <ProfilePage />}
+        {!isUserLoggedIn && <Redirect to='/auth' />}
       </Route>
 
         <Route path="/shop/electronics">
