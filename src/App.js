@@ -1,13 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
-import HomePage from "./Pages/HomePage";
-import AuthPage from "./Pages/AuthPage";
-import ElectronicsPage from "./Pages/ElectronicsPage";
-import MensPage from "./Pages/MensPage";
-import AllProductsPage from "./Pages/AllProductsPage";
-import ProfilePage from "./Pages/ProfilePage";
-import WomensPage from "./Pages/WomensPage";
-import JeweleryPage from "./Pages/JeweleryPage";
+import {AllProductsPage, AuthPage, ElectronicsPage, HomePage, JeweleryPage, MensPage, ProfilePage, WomensPage} from './Pages'
 import { Redirect } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import { useSelector } from "react-redux";
