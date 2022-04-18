@@ -26,6 +26,10 @@ export default function NavigationBar() {
         </li>
 
         <li>
+          <NavLink to="/shop/jewelery">Jewelery</NavLink>
+        </li>
+
+        <li>
           <NavLink to="/shop/all">All</NavLink>
         </li>
 
@@ -38,7 +42,7 @@ export default function NavigationBar() {
         </li>
 
         <li>
-        {isUserLoggedIn && <button onClick={()=>setCallLogout(true)}>Logout</button> }
+        {isUserLoggedIn && <NavLink to="/" onClick={()=>setCallLogout(true)}>Logout</NavLink> }
         </li>
 
       </ul>

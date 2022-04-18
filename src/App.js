@@ -7,6 +7,7 @@ import MensPage from "./Pages/MensPage";
 import AllProductsPage from "./Pages/AllProductsPage";
 import ProfilePage from "./Pages/ProfilePage";
 import WomensPage from "./Pages/WomensPage";
+import JeweleryPage from "./Pages/JeweleryPage";
 import { Redirect } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import { useSelector } from "react-redux";
@@ -53,6 +54,10 @@ function App() {
 
         <Route path="/shop/women">
           <WomensPage />
+        </Route>
+
+        <Route path="/shop/jewelery">
+          <JeweleryPage />
         </Route>
 
         <Route path="/shop/all">
