@@ -10,6 +10,8 @@ import WomensPage from "./Pages/WomensPage";
 import { Redirect } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import { useSelector } from "react-redux";
+import LoadAllProductsFirstTime from "./Components/Products/LoadAllProductsFirstTime";
+import DisplaySingleProduct from "./Components/Products/DisplaySingleProduct";
 
 // Takes the responsibility of setting up routes, some of which depend on the login state
 function App() {
@@ -19,6 +21,9 @@ function App() {
     <div>
 {/* NavigationBar includes Links to pages*/}
       <NavigationBar />
+
+{/* Load the products through fetch and store initialize the redux store*/}
+      <LoadAllProductsFirstTime />
 
       <Switch>
 
@@ -52,6 +57,10 @@ function App() {
 
         <Route path="/shop/all">
           <AllProductsPage />
+        </Route>
+
+        <Route path="/shop/:singleProduct">
+          <DisplaySingleProduct />
         </Route>
 
 {/* If nothing matches, redirect to home page */}
