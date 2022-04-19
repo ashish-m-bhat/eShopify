@@ -1,7 +1,6 @@
-import { Route, Switch } from "react-router-dom";
-
+import { Route, Redirect, Switch } from "react-router-dom";
+import './App.css'
 import {AllProductsPage, AuthPage, ElectronicsPage, HomePage, JeweleryPage, MensPage, ProfilePage, WomensPage} from './Pages'
-import { Redirect } from "react-router-dom";
 import NavigationBar from "./Components/NavigationBar";
 import { useSelector } from "react-redux";
 import LoadAllProductsFirstTime from "./Components/Products/LoadAllProductsFirstTime";

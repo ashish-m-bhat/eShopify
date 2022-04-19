@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Logout from "./Auth/Logout";
+import SearchProducts from "./SearchProducts";
 
 export default function NavigationBar() {
   const [callLogout, setCallLogout] = useState(false);
@@ -11,7 +12,7 @@ export default function NavigationBar() {
       <Link to="/">
         <h1>eShopify</h1>
       </Link>
-
+    <nav>
       <ul>
         <li>
           <NavLink to="/shop/men">Men</NavLink>
@@ -34,6 +35,10 @@ export default function NavigationBar() {
         </li>
 
         <li>
+         <SearchProducts />
+        </li>
+
+        <li>
         {!isUserLoggedIn && <NavLink to="/auth">Login</NavLink> }
         </li>
 
@@ -47,6 +52,7 @@ export default function NavigationBar() {
 
       </ul>
       {callLogout && <Logout setCallLogout={setCallLogout}/>}
+    </nav>
     </header>
   );
 }
