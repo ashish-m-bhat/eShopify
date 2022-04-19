@@ -17,7 +17,6 @@ export default function SearchProducts() {
     <form>
       <input type="text" placeholder="Search Products" value={searchValue} onChange={(event)=>setSearchValue(event.target.value)}/>
       <button onClick={searchProductsHandler}>Search</button>
-      <button onClick={()=> setSearchValue('')}>X</button>
     </form>
   );
 }
