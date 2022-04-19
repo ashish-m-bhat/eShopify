@@ -1,8 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
-export default function DisplayProducts(props) {
+// Generic Component to display the given products
 
+export default function DisplayProducts(props) {
     const history = useHistory();
     // When an item is clicked, redirect the location
     const callDisplaySingleProduct = (id) =>{
@@ -11,6 +12,7 @@ export default function DisplayProducts(props) {
 
     return (
         <div>
+            {!props.productsToDisplay.length && <h1>Oops No Items Found</h1>}
             {props.productsToDisplay.map(eachProduct => {
                 return(
                     <div key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id)}>
