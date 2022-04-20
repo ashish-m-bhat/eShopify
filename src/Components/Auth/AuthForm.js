@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
+import { cartActions } from '../../Store/CartSore';
 
 
 // Has a form for Login Or Signup
@@ -14,11 +16,19 @@ export default function AuthForm(){
   const passwordRef = useRef();
   const formRef = useRef();
 
-  const authDispather = useDispatch();
+  const history = useHistory();
+  const dispather = useDispatch();
 
   // Function to be executed after fetch is satified
   const postFetchFunction = (data) =>{
-    authDispather(authActions.login());
+    dispather(authActions.login(data));
+
+    // After login, instantiate the DB which has 'cart' table.
+    dispather(cartActions.instantiateDB());
+
+    // Once logged in, go back. This is because, if user isn't logged in he is redirected to login when he tries to add a product to cart
+    // Hence we must take him back to the same page.
+    history.goBack();
   }
 
   // Function to clear Form
