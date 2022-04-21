@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { cartActions } from '../../Store/CartSore';
+import { cartActions } from '../../Store/CartStore';
 
 // Displays a single product
 // Allows the user to add item to the cart. If the user isn't logged in, he is taken to the login page and brought back to this page
@@ -34,7 +34,7 @@ export default function DisplaySingleProduct() {
             history.push('/auth');
         }
         else{
-            const item = {id:+selectedProduct.id, email:email, title:selectedProduct.title, image:selectedProduct.image, href:history.location.pathname};
+            const item = {id:+selectedProduct.id, email:email, title:selectedProduct.title, image:selectedProduct.image, href:history.location.pathname, price:selectedProduct.price};
             dispatcher(cartActions.addItemToCart(item));
         }
     }

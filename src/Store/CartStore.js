@@ -27,6 +27,7 @@ const cartSlice = createSlice({
                                 title:action.payload.title,
                                 email:action.payload.email,
                                 count:1,
+                                price:action.payload.price,
                                 image: action.payload.image,
                                 href:action.payload.href};
 
@@ -54,6 +55,13 @@ const cartSlice = createSlice({
             }
         }, // addItemToCart()
 
+        // Empty the cart after an order has been placed
+        emptyCart(){
+            const clearRequest = indexedDB.open('userDB', 1);
+            clearRequest.onsuccess = e =>{
+                clearRequest.result.transaction('cart', 'readwrite').objectStore('cart').clear();
+            }
+        }
     }
 });
 

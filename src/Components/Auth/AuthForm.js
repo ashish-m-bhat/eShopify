@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
-import { cartActions } from '../../Store/CartSore';
+import { cartActions } from '../../Store/CartStore';
 
 
 // Has a form for Login Or Signup
