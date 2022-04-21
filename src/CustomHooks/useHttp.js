@@ -1,9 +1,7 @@
-import React, { useCallback } from 'react'
-
 export default function useHttp(postFetchFunction) {
 
 
-    const satisfyRequest = useCallback(async (requestConfig) => {
+    const satisfyRequest = async (requestConfig) => {
 
         const response = await fetch(requestConfig.url, {
             method:requestConfig.method,
@@ -14,6 +12,6 @@ export default function useHttp(postFetchFunction) {
 
         // Execute the function passed as a parameter
         postFetchFunction(data);
-    })
+    }
     return satisfyRequest;
 }
