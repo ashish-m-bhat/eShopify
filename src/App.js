@@ -1,6 +1,6 @@
 import { Route, Redirect, Switch } from "react-router-dom";
 import './App.css'
-import {AllProductsPage, AuthPage, ElectronicsPage, HomePage, JeweleryPage, MensPage, ProfilePage, WomensPage} from './Pages'
+import {AllProductsPage, AuthPage, ElectronicsPage, HomePage, JeweleryPage, MensPage, ProfilePage, WomensPage, CartPage} from './Pages'
 import NavigationBar from "./Components/NavigationBar";
 import { useSelector } from "react-redux";
 import LoadAllProductsFirstTime from "./Components/Products/LoadAllProductsFirstTime";
@@ -27,12 +27,18 @@ function App() {
 {/* If not logged in, display login form, else redirect to profile page */}
         <Route path="/auth">
           {!isUserLoggedIn && <AuthPage />}
-          {isUserLoggedIn && <Redirect to='/' />}
+          {isUserLoggedIn && <Redirect to='/profile' />}
         </Route>
 
 {/* If logged in, display profile page , else redirect to login page */}
       <Route path="/profile">
         {isUserLoggedIn && <ProfilePage />}
+        {!isUserLoggedIn && <Redirect to='/auth' />}
+      </Route>
+
+{/* if user is logged in, cart can be viewed. Else, redirect to the login page */}
+      <Route path="/cart">
+        {isUserLoggedIn && <CartPage />}
         {!isUserLoggedIn && <Redirect to='/auth' />}
       </Route>
 
