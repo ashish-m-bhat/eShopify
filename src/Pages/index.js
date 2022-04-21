@@ -6,6 +6,7 @@ import MensPage from "./MensPage";
 import JeweleryPage from "./JeweleryPage";
 import ProfilePage from "./ProfilePage";
 import WomensPage from "./WomensPage";
+import CartPage from "./CartPage";
 
 // Export all the pages
 export {
@@ -16,5 +17,6 @@ export {
     MensPage,
     JeweleryPage,
     ProfilePage,
-    WomensPage
+    WomensPage,
+    CartPage
 };

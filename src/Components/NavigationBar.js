@@ -47,6 +47,10 @@ export default function NavigationBar() {
         </li>
 
         <li>
+        {isUserLoggedIn && <NavLink to="/cart">Cart</NavLink> }
+        </li>
+
+        <li>
         {isUserLoggedIn && <NavLink to="/" onClick={()=>setCallLogout(true)}>Logout</NavLink> }
         </li>
 
