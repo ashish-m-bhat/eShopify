@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import DisplayCart from './DisplayCart';
 
 // Get the items from cart table in userDB and display them using DisplayCart component
-export default function GetCart() {
+export default function FetchCart() {
     const username = useSelector(state => state.auth.username);
     const [cartArray, setCartArray] = useState([]);
 
@@ -26,7 +26,7 @@ export default function GetCart() {
     return (
       <>
         <h1>Cart of {username}</h1>
-      {<DisplayCart cartArray={cartArray} />}
+        <DisplayCart cartArray={cartArray} />
       </>
     )
 }

@@ -15,7 +15,7 @@ export default function Logout(props) {
         // Delete the DB that has 'cart' table
         dispatcher(cartActions.deleteDB());
 
-    }, [props.setCallLogout])
+    }, [props, dispatcher])
 
   return (
     <></>
