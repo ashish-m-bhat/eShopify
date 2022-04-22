@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
@@ -20,7 +20,7 @@ export default function AuthForm(){
   const dispather = useDispatch();
 
   // Function to be executed after fetch is satified
-  const postFetchFunction = (data) =>{
+  const postFetchFunction = useCallback((data) =>{
     dispather(authActions.login(data));
 
     // After login, instantiate the DB which has 'cart' table.
@@ -29,7 +29,7 @@ export default function AuthForm(){
     // Once logged in, go back. This is because, if user isn't logged in he is redirected to login when he tries to add a product to cart
     // Hence we must take him back to the same page.
     history.goBack();
-  }
+  },[dispather, history]);
 
   // Function to clear Form
   const clearForm =() =>{
