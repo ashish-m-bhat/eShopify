@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 // Function to sort the products
 // Takes in sortBy that tells the way to sort and productsToDisplay which is an array of products
@@ -24,11 +25,17 @@ const callDisplaySingleProduct = (id, history) =>{
     history.push(`/shop/${id}`)
 }
 
-// Generic Component to display the given products
+/* Generic Component to display the given products
+ Returns
+    1. A select tag for sorting
+    2. A display message if Products are empty.
+    3. Map through the array and display each product
+*/
 export default function DisplayProducts(props) {
     const location = useLocation();
     const history = useHistory();
     const sortBy = new URLSearchParams(location.search).get('sort');
+    const [callSpinner, setCallSpinner] = useState(true);
 
     // To set the sorting method when the user selects an option
     const sortHandler = (event) =>{
@@ -45,12 +52,15 @@ export default function DisplayProducts(props) {
         sortProducts(sortBy, props.productsToDisplay)
     }
 
-    /* Returns
-        1. A select tag for sorting
-        2. A display message if Products are empty.
-        TODO:https://github.com/Ashish-M-Bhat/eShopify/issues/5 : This shows up in that 1ms delay when products are searched. Add a loading spinner
-        3. Map through the array and display each product
-    */
+   // If productsToDisplay array is empty, call the spinner
+   // But even after 1s if the productsToDisplay is still empty, display Not Found message.
+   if(!props.productsToDisplay.length){
+        if(callSpinner)
+            return <LoadingSpinner setCallSpinner={setCallSpinner} timeout={1500}/>
+        else  // callSpinner is set to false after 1s in the LoadingSpinner component
+            return <h2>No items To Display!</h2>
+   }
+
     return (
         <div>
             <select onChange={(e) => sortHandler(e)} id="sortSelect">
@@ -59,8 +69,6 @@ export default function DisplayProducts(props) {
                 <option value="priceLowToHigh">Price Low To High</option>
                 <option value="priceHighToLow">Price High to Low</option>
             </select>
-
-            {!props.productsToDisplay.length && <h1>Oops No Items Found</h1>}
 
             {props.productsToDisplay.map(eachProduct => {
                 return(

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
 import { cartActions } from '../../Store/CartStore';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 
 // Has a form for Login Or Signup
@@ -12,10 +13,10 @@ import { cartActions } from '../../Store/CartStore';
 
 export default function AuthForm(){
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
   const formRef = useRef();
-
   const history = useHistory();
   const dispather = useDispatch();
 
@@ -25,6 +26,9 @@ export default function AuthForm(){
 
     // After login, instantiate the DB which has 'cart' table.
     dispather(cartActions.instantiateDB());
+
+    // Stop the Spinner
+    setIsLoading(false);
 
     // Once logged in, go back. This is because, if user isn't logged in he is redirected to login when he tries to add a product to cart
     // Hence we must take him back to the same page.
@@ -45,6 +49,9 @@ export default function AuthForm(){
   //Function to be executed when login/signup button is clicked
   const loginSignupHandler=(event) =>{
     event.preventDefault();
+
+    // Start the spinner
+    setIsLoading(true);
 
     const apiKey='AIzaSyA357y-kI6368NgHXnMI5pW77y71GqpGuw';
     const url= isLogin?'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=':'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
@@ -83,6 +90,7 @@ export default function AuthForm(){
           </button>
         </div>
       </form>
+      {isLoading && <LoadingSpinner />}
     </section>
   );
 };

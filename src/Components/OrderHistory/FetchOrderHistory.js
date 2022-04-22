@@ -2,10 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import useHttp from '../../CustomHooks/useHttp';
 import DisplayOrderHistory from './DisplayOrderHistory';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 // Fetches the order history for the user
 export default function FetchOrderHistory() {
     const [orderHistoryArray, setOrderHistoryArray]=useState([]);
+    const [callSpinner, setCallSpinner] = useState(true);
     const email = useSelector(state => state.auth.email);
 
     // orderHistoryArray is an array of arrays.
@@ -28,10 +30,18 @@ export default function FetchOrderHistory() {
         satisfyRequest({url:'https://react-http-bf239-default-rtdb.firebaseio.com/products.json', method:'GET'});
     }, [satisfyRequest]);
 
+   // If orderHistoryArray array is empty, call the Spinner
+   // But even after 1s if the orderHistoryArray is still empty, display No Order History message.
+   if(!orderHistoryArray.length){
+    if(callSpinner)
+      return <LoadingSpinner setCallSpinner={setCallSpinner} />
+    else
+      return <h2>No order history found!</h2>
+  }
   return (
       <>
         <h1>Order History</h1>
-        {orderHistoryArray.length === 0?<h2>No order history found</h2>:<DisplayOrderHistory orderHistoryArray={orderHistoryArray} />}
+        {orderHistoryArray.length !== 0 && <DisplayOrderHistory orderHistoryArray={orderHistoryArray} />}
       </>
   );
 }
