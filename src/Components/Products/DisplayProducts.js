@@ -35,6 +35,7 @@ export default function DisplayProducts(props) {
     const location = useLocation();
     const history = useHistory();
     const sortBy = new URLSearchParams(location.search).get('sort');
+    const searchedProduct =  new URLSearchParams(location.search).get('search');
     const [callSpinner, setCallSpinner] = useState(true);
 
     // To set the sorting method when the user selects an option
@@ -43,8 +44,14 @@ export default function DisplayProducts(props) {
         if(document.querySelector('#sortSelect').children[0].value === 'placeHolder'){
             document.querySelector('#sortSelect').children[0].remove();
         }
-        // Append the selected sorting method value
-        history.push(`${location.pathname}?sort=${event.target.value}`);
+
+        // Append the selected sorting method value. Check if ?search=something exists
+        // We can't directly append & or ?sort=popularity using location.search since if we change the sorting method, the method gets appended to the previous sorting method in the URL
+        let pathToBePushed = `${location.pathname}?`; // /shop/all?
+        pathToBePushed += searchedProduct ? `search=${searchedProduct}&sort=${event.target.value}` : `sort=${event.target.value}`
+        // /shop/all?search=jacket&sort=popularity : /shop/all?sort=popularity
+
+        history.push(pathToBePushed);
     }
 
     // If a sort option has been clicked, call sortProducts()
@@ -86,6 +93,14 @@ export default function DisplayProducts(props) {
 How Sorting Works?
 
 1. When the page loads, the default 'placeHolder' option is selected.
+2. When the user clicks an option, the sortHandler is called.
+3. sortHandler checks if the value of 1st child element of the <select> is placeHolder. If yes, remove it.
+4. Append the ?sort=<selected value> to the url
+5.Component re renders and this time the variable sortBy isn't empty.
+6. sortProducts gets called, which then sorts the products array
+7. Since the productsToDisplay array is a props, the component re renders
+
+ */
 2. When the user clicks an option, the sortHandler is called.
 3. sortHandler checks if the value of 1st child element of the <select> is placeHolder. If yes, remove it.
 4. Append the ?sort=<selected value> to the url
