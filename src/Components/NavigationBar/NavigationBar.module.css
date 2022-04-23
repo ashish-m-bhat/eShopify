@@ -79,6 +79,5 @@ input:focus{
     cursor: pointer;
     height: 2vh;
     width: 1.5vw;
-    margin-left: 1vw;
-    margin-top: 1vh;
+    margin-left: 1.5vw;
 }

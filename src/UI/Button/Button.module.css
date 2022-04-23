@@ -1,0 +1,13 @@
+.Button{
+    cursor: pointer;
+    font: inherit;
+    border: 1px solid silver;
+    color: white;
+    background-color: gray;
+    border-radius: 1vh;
+    padding: 1vh;
+
+}
+.Button:hover{
+    background-color: silver;
+}

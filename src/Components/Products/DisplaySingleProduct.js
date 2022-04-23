@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { cartActions } from '../../Store/CartStore';
+import Button from '../../UI/Button/Button';
 
 // Displays a single product
 // Allows the user to add item to the cart. If the user isn't logged in, he is taken to the login page and brought back to this page
@@ -45,7 +46,7 @@ export default function DisplaySingleProduct() {
             <p>{selectedProduct.description}</p>
             <p>Price : {selectedProduct.price}</p>
             <p>Rating {selectedProduct.rating.rate}({selectedProduct.rating.count})</p>
-            <button onClick={addItemToCartHandler}>Add to Cart</button>
+            <Button onClick={addItemToCartHandler}>Add to Cart</Button>
         </div>
       )
 }
