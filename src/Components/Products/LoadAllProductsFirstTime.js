@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../../Store/ProductsStore';
-import LoadingSpinner from '../UI/LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 export default function LoadAllProductsFirstTime() {
   console.log("Load Products for first time");

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
 import { cartActions } from '../../Store/CartStore';
-import LoadingSpinner from '../UI/LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 
 // Has a form for Login Or Signup

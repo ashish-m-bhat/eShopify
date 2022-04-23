@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import useHttp from '../../CustomHooks/useHttp';
 import DisplayOrderHistory from './DisplayOrderHistory';
-import LoadingSpinner from '../UI/LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 // Fetches the order history for the user
 export default function FetchOrderHistory() {

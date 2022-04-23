@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import LoadingSpinner from '../UI/LoadingSpinner';
+import { useHistory } from 'react-router-dom';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import DisplayCart from './DisplayCart';
 
 // Get the items from cart table in userDB and display them using DisplayCart component
@@ -8,6 +9,7 @@ export default function FetchCart() {
     const username = useSelector(state => state.auth.username);
     const [cartArray, setCartArray] = useState([]);
     const [callSpinner, setCallSpinner] = useState(true);
+    const history = useHistory();
 
     // Get the cart from indexedDB
     useEffect(()=>{
@@ -31,7 +33,12 @@ export default function FetchCart() {
       if(callSpinner)
         return <LoadingSpinner setCallSpinner={setCallSpinner} />
       else if(!callSpinner)
-        return <h2>Your Cart is empty!</h2>
+        return(
+          <>
+            <h2>Your Cart is empty!</h2>
+          <button onClick={()=>history.push('/shop/all')}>Shop Now</button>
+          </>
+        );
     }
     return (
       <>

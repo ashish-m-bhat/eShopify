@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import LoadingSpinner from '../UI/LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 // Function to sort the products
 // Takes in sortBy that tells the way to sort and productsToDisplay which is an array of products

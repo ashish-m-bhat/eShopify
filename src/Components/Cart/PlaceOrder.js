@@ -3,12 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp'
 import { cartActions } from '../../Store/CartStore';
-import LoadingSpinner from '../UI/LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
-// If cart is empty display a button to redirect to /shop/all
-const shopNowHandler = (history) =>{
-    history.push('/shop/all')
-}
 // Gets the cartArray from DisplayCart and POSTs it to the Firebase DB
 export default function PlaceOrder(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -48,8 +44,6 @@ export default function PlaceOrder(props) {
     }
   return (
     <div>
-
-        {!props.cartArray.length && <button onClick={()=>shopNowHandler(history)}>Shop Now</button>}
         {props.cartArray.length > 0 && <h2>Your total is $ {totalBill}</h2>}
         <button hidden={!props.cartArray.length} onClick={placeOrderHandler}>Place Order</button>
         {isLoading && <LoadingSpinner/>}
