@@ -101,11 +101,3 @@ How Sorting Works?
 7. Since the productsToDisplay array is a props, the component re renders
 
  */
-2. When the user clicks an option, the sortHandler is called.
-3. sortHandler checks if the value of 1st child element of the <select> is placeHolder. If yes, remove it.
-4. Append the ?sort=<selected value> to the url
-5.Component re renders and this time the variable sortBy isn't empty.
-6. sortProducts gets called, which then sorts the products array
-7. Since the productsToDisplay array is a props, the component re renders
-
- */
