@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import logo from '../../searchIcon.png';
+import cssClasses from './NavigationBar.module.css';
 
 // Used to search through all the products
 // Has a form, which on submission redirects the page to /shop/all?search=<searched value>
@@ -16,7 +18,7 @@ export default function SearchProducts() {
   return (
     <form>
       <input type="text" placeholder="Search" value={searchValue} onChange={(event)=>setSearchValue(event.target.value)}/>
-      <button onClick={searchProductsHandler}>Search</button>
+      <img src={logo} onClick={searchProductsHandler} className={cssClasses.searchIcon} alt="searchIcon"></img>
     </form>
   );
 }

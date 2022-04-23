@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
+import Card from '../../UI/Card/Card'
+import cssClasses from './DisplayProducts.module.css'
 
 // Function to sort the products
 // Takes in sortBy that tells the way to sort and productsToDisplay which is an array of products
@@ -76,15 +78,17 @@ export default function DisplayProducts(props) {
                 <option value="priceLowToHigh">Price Low To High</option>
                 <option value="priceHighToLow">Price High to Low</option>
             </select>
-
-            {props.productsToDisplay.map(eachProduct => {
-                return(
-                    <div key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id, history)}>
-                    <p>{eachProduct.title} </p>
-                    <img src={eachProduct.image} alt={eachProduct.title} height={"100px"} width={"100px"} loading="lazy"/>
-                    </div>
-                )
-            })}
+            <div className={cssClasses.productsSection}>
+                {props.productsToDisplay.map(eachProduct => {
+                    return(
+                        <Card key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id, history)} className={cssClasses.eachProduct}>
+                            <p>{eachProduct.title} </p>
+                            <img src={eachProduct.image} alt={eachProduct.title} height={"100px"} width={"100px"} loading="lazy"/>
+                            <p>${eachProduct.price}</p>
+                        </Card>
+                    )
+                })}
+            </div>
         </div>
     )
 }
