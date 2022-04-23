@@ -1,4 +1,5 @@
 import reactDom from "react-dom";
+import Button from "../Button/Button";
 import Card from "./Card";
 import ErrorModalCssModule from "./ErrorModal.module.css";
 
@@ -12,7 +13,7 @@ const Overlay = (props) => {
         <p>{props.message}</p>
       </div>
       <footer className={ErrorModalCssModule.actions}>
-        <button onClick={props.closeErrorModal}>Okay :(</button>
+        <Button onClick={props.closeErrorModal}>Okay :(</Button>
       </footer>
     </Card>
   );

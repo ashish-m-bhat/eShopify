@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import DisplayCart from './DisplayCart';
 
@@ -36,7 +37,7 @@ export default function FetchCart() {
         return(
           <>
             <h2>Your Cart is empty!</h2>
-          <button onClick={()=>history.push('/shop/all')}>Shop Now</button>
+          <Button onClick={()=>history.push('/shop/all')}>Shop Now</Button>
           </>
         );
     }

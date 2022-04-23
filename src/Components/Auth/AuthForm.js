@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
 import { cartActions } from '../../Store/CartStore';
+import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 
@@ -81,13 +82,13 @@ export default function AuthForm(){
           <input type='password' id='password' ref={passwordRef} required />
         </div>
         <div>
-          <button onClick={loginSignupHandler}>{isLogin ? 'Login' : 'Create Account'}</button>
-          <button
+          <Button onClick={loginSignupHandler}>{isLogin ? 'Login' : 'Create Account'}</Button>
+          <Button
             type='button'
             onClick={switchAuthModeHandler}
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
-          </button>
+          </Button>
         </div>
       </form>
       {isLoading && <LoadingSpinner />}
