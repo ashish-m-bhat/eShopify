@@ -16,7 +16,7 @@ export default function SearchProducts() {
       setSearchValue('');
   }
   return (
-    <form>
+    <form onSubmit={searchProductsHandler}>
       <input type="text" placeholder="Search" value={searchValue} onChange={(event)=>setSearchValue(event.target.value)}/>
       <img src={logo} onClick={searchProductsHandler} className={cssClasses.searchIcon} alt="searchIcon"></img>
     </form>

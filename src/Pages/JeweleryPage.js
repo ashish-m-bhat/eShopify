@@ -1,8 +1,14 @@
 import React from 'react';
-import JeweleryProducts from '../Components/Products/JeweleryProducts';
+import { useSelector } from 'react-redux';
+import DisplayProducts from '../Components/Products/DisplayProducts';
+
+// List all the products with category jewelery
 
 export default function JeweleryPage() {
+  const allProducts = useSelector(state => state.products.allProductsArray);
+  const jeweleryProducts = allProducts.filter(e => e.category === "jewelery");
+
   return (
-    <JeweleryProducts />
+    <DisplayProducts productsToDisplay={jeweleryProducts} />
   );
 }
