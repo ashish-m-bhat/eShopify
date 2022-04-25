@@ -1,0 +1,42 @@
+body{
+    color:white;
+    font-size: large;
+}
+
+
+.productInfo{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+h1,p{
+    align-self: center;
+}
+
+.eachProductImage{
+    height:55vh;
+    width: 30vw;
+    margin-top: 5vh;
+
+
+    cursor: pointer;
+}
+
+.imageAndDescription{
+    display: flex;
+    justify-content: space-around;
+}
+
+.description{
+    width: 40%;
+    font-size: larger;
+    line-height: 1.5;
+    padding: 1vw;
+
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}

@@ -10,21 +10,33 @@
 }
 .eachProduct{
     width: 20vw;
-    height: auto;
+    height: 35vh;
     margin: 2%;
     padding: 0.5%;
-
     text-align: center;
     font-size: large;
     cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerCard{
+    width: 18vw;
+    height: auto;
     background-color: white;
     color: gray;
-    border: 1px solid transparent;
+    border-radius: 1.2vw;
 }
-
-.eachProduct:hover{
+.innerCard:hover{
+    width: 20vw;
+    height: 35vh;
     background-color: gray;
-    color: silver;
+    color: white;
     border: 1px solid silver;
 }
 

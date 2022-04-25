@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { cartActions } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
+import cssClasses from './DisplaySingleProduct.module.css'
 
 // Displays a single product
 // Allows the user to add item to the cart. If the user isn't logged in, he is taken to the login page and brought back to this page
@@ -40,13 +41,17 @@ export default function DisplaySingleProduct() {
         }
     }
     return(
-        <div>
-            <p>{selectedProduct.title} </p>
-            <img src={selectedProduct.image} alt='' height={"500px"} width={"600px"}/>
-            <p>{selectedProduct.description}</p>
-            <p>Price : {selectedProduct.price}</p>
-            <p>Rating {selectedProduct.rating.rate}({selectedProduct.rating.count})</p>
-            <Button onClick={addItemToCartHandler}>Add to Cart</Button>
+        <div className={cssClasses.productInfo}>
+            <h1>{selectedProduct.title} </h1>
+            <span className={cssClasses.imageAndDescription}>
+                <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
+                <span className={cssClasses.description}>
+                    <p>{selectedProduct.description}</p>
+                    <p>Price : {selectedProduct.price}</p>
+                    <p>Rating {selectedProduct.rating.rate}({selectedProduct.rating.count})</p>
+                    <Button onClick={addItemToCartHandler}>Add to Cart</Button>
+                </span>
+            </span>
         </div>
       )
 }

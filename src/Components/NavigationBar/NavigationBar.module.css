@@ -46,9 +46,11 @@
     color: white;
     border-radius: 6px;
 }
-input:focus{
-    background-color: transparent;
+input:hover,input:focus{
+    background-color: white;
+    color:gray;
 }
+
 .header button{
     font: inherit;
 
@@ -71,13 +73,14 @@ input:focus{
     color: #38015c;
 }
 ::placeholder{
-    color:white;
+    color:silver;
     text-align: center;
 }
 
 .searchIcon{
     cursor: pointer;
     height: 2vh;
-    width: 1vw;
+    width: 1.2vw;
     margin-left: 1.5vw;
+    margin-top: 1vh;
 }
