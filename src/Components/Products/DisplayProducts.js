@@ -71,13 +71,15 @@ export default function DisplayProducts(props) {
    }
 
     return (
-        <div>
-            <select onChange={(e) => sortHandler(e)} id="sortSelect">
-                <option value="placeHolder" defaultValue={true}>Sort</option>
-                <option value="popularity">Sort By Popularity</option>
-                <option value="priceLowToHigh">Price Low To High</option>
-                <option value="priceHighToLow">Price High to Low</option>
-            </select>
+        <>
+            <div className={cssClasses.slct}>
+                <select onChange={(e) => sortHandler(e)} id="sortSelect">
+                    <option value="placeHolder" defaultValue={true}>Sort</option>
+                    <option value="popularity">Sort By Popularity</option>
+                    <option value="priceLowToHigh">Price Low To High</option>
+                    <option value="priceHighToLow">Price High to Low</option>
+                </select>
+            </div>
             <div className={cssClasses.productsSection}>
                 {props.productsToDisplay.map(eachProduct => {
                     return(
@@ -91,8 +93,8 @@ export default function DisplayProducts(props) {
                     )
                 })}
             </div>
-        </div>
-    )
+        </>
+    );
 }
 
 /*

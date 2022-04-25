@@ -47,7 +47,7 @@ export default function DisplaySingleProduct() {
                 <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
                 <span className={cssClasses.description}>
                     <p>{selectedProduct.description}</p>
-                    <p>Price : {selectedProduct.price}</p>
+                    <p>Price : $ {selectedProduct.price}</p>
                     <p>Rating {selectedProduct.rating.rate}({selectedProduct.rating.count})</p>
                     <Button onClick={addItemToCartHandler}>Add to Cart</Button>
                 </span>

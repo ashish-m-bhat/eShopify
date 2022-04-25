@@ -6,7 +6,7 @@ import { authActions } from '../../Store/AuthStore';
 import { cartActions } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
-
+import cssClasses from './AuthForm.module.css';
 
 // Has a form for Login Or Signup
 // With the help of useHttp custom hook, it checks for credentials
@@ -70,22 +70,23 @@ export default function AuthForm(){
   };
 
   return (
-    <section>
+    <section className={cssClasses.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form ref={formRef}>
-        <div>
+        <div className={cssClasses.control}>
           <label htmlFor='email'>Your Email</label>
           <input type='email' id='email' ref={emailRef} required />
         </div>
-        <div>
+        <div className={cssClasses.control}>
           <label htmlFor='password'>Your Password</label>
           <input type='password' id='password' ref={passwordRef} required />
         </div>
-        <div>
+        <div className={cssClasses.actions}>
           <Button onClick={loginSignupHandler}>{isLogin ? 'Login' : 'Create Account'}</Button>
           <Button
             type='button'
             onClick={switchAuthModeHandler}
+            className={cssClasses.toggle}
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </Button>

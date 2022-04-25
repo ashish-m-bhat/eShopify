@@ -1,0 +1,71 @@
+.auth {
+    margin-top: 19vh;
+    height: 35vh;
+    margin-left: 39vw;
+    width: 25vw;
+    padding: 2vw;
+    border-radius: 7px;
+    background-color: #38015c;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+  }
+
+  .control {
+    margin-top: 1vw;;
+    margin-bottom: 1vw;
+  }
+
+  .control label {
+    display: block;
+    color: white;
+    font-weight: bold;
+    margin-top: 1vw;;
+    margin-bottom: 1vw;
+  }
+
+  .control input {
+    font: inherit;
+    background-color: #f1e1fc;
+    color: #38015c;
+    border-radius: 4px;
+    border: 1px solid white;
+    width: 90%;
+    text-align: left;
+    padding: 0.25rem;
+
+  }
+
+  .actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .actions button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #9f5ccc;
+    border: 1px solid #9f5ccc;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+  }
+
+  .actions button:hover {
+    background-color: #873abb;
+    border-color: #873abb;
+  }
+
+  .actions .toggle {
+    margin-top: 2vh;
+    background-color: transparent;
+    color: #9f5ccc;
+    border: none;
+  }
+
+  .actions .toggle:hover {
+    background-color: transparent;
+    color: #ae82cc;
+  }

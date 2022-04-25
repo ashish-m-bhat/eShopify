@@ -12,8 +12,12 @@ export default function LoadingSpinner(props) {
   }
 
   return (
-    <div className={cssClasses.spinnerContainer}>
-      <div className={cssClasses.loadingSpinner}></div>
+    <div>
+      <div className={cssClasses.backdrop}>
+      </div>
+      <div className={cssClasses.spinnerContainer}>
+        <div className={cssClasses.loadingSpinner}></div>
+      </div>
     </div>
   );
 }
