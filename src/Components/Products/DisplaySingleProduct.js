@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { cartActions } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
+import StarRating from '../../UI/StarRating/StarRating';
 import cssClasses from './DisplaySingleProduct.module.css'
 
 // Displays a single product
@@ -49,6 +50,7 @@ export default function DisplaySingleProduct() {
                     <p>{selectedProduct.description}</p>
                     <p>Price : $ {selectedProduct.price}</p>
                     <p>Rating {selectedProduct.rating.rate}({selectedProduct.rating.count})</p>
+                    <StarRating rating={selectedProduct.rating.rate} size={25}/>
                     <Button onClick={addItemToCartHandler}>Add to Cart</Button>
                 </span>
             </span>

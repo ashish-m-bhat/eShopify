@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import logo from '../../searchIcon.png';
+import {MdSearch} from 'react-icons/md';
 import cssClasses from './NavigationBar.module.css';
 
 // Used to search through all the products
@@ -18,7 +18,9 @@ export default function SearchProducts() {
   return (
     <form onSubmit={searchProductsHandler}>
       <input type="text" placeholder="Search" value={searchValue} onChange={(event)=>setSearchValue(event.target.value)}/>
-      <img src={logo} onClick={searchProductsHandler} className={cssClasses.searchIcon} alt="searchIcon"></img>
+      <span className={cssClasses.searchIcon}>
+        <MdSearch size={35} onClick={searchProductsHandler} />
+      </span>
     </form>
   );
 }

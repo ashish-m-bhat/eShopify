@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import Card from '../../UI/Card/Card'
 import cssClasses from './DisplayProducts.module.css'
+import StarRating from '../../UI/StarRating/StarRating';
 
 // Function to sort the products
 // Takes in sortBy that tells the way to sort and productsToDisplay which is an array of products
@@ -88,6 +89,7 @@ export default function DisplayProducts(props) {
                                 <p>{eachProduct.title} </p>
                                 <img src={eachProduct.image} alt={eachProduct.title} height={"100px"} width={"100px"} loading="lazy"/>
                             <p>${eachProduct.price}</p>
+                            <StarRating rating={eachProduct.rating.rate} size={20}/>
                             </div>
                         </Card>
                     )

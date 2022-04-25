@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Logout from "../Auth/Logout";
 import SearchProducts from "./SearchProducts";
+import {CgProfile,} from 'react-icons/cg';
+import {MdOutlineShoppingCart, MdOutlineLogin, MdOutlineLogout} from 'react-icons/md';
 import cssClasses from './NavigationBar.module.css';
 
 
@@ -40,20 +42,20 @@ export default function NavigationBar() {
          <SearchProducts />
         </li>
 
-        <li>
-        {!isUserLoggedIn && <NavLink to="/auth">Login</NavLink> }
+        <li className={cssClasses.login}>
+        {!isUserLoggedIn && <NavLink to="/auth"><MdOutlineLogin size={30} color="white"/></NavLink> }
         </li>
 
-        <li>
-        {isUserLoggedIn && <NavLink to="/profile">Profile</NavLink> }
+        <li className={cssClasses.profile}>
+        {isUserLoggedIn && <NavLink to="/profile"><CgProfile size={30}/></NavLink> }
         </li>
 
-        <li>
-        {isUserLoggedIn && <NavLink to="/cart">Cart</NavLink> }
+        <li className={cssClasses.cart}>
+        {isUserLoggedIn && <NavLink to="/cart"><MdOutlineShoppingCart size={30} color="white"/></NavLink> }
         </li>
 
-        <li>
-        {isUserLoggedIn && <NavLink to="/" onClick={()=>setCallLogout(true)}>Logout</NavLink> }
+        <li className={cssClasses.logout}>
+        {isUserLoggedIn && <NavLink to="/" onClick={()=>setCallLogout(true)}><MdOutlineLogout size={30} color="white"/></NavLink> }
         </li>
 
       </ul>

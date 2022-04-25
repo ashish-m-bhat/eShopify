@@ -39,13 +39,16 @@
 
 .header input{
     font: inherit;
-    height:3vh;
+    height: 3vh;
     width: 10vw;
-    border: 1px solid lightgreen;
+    border: 1px solid silver;
     background-color: gray;
     color: white;
     border-radius: 6px;
+    position: relative;
+    top: -0.5vh;
 }
+
 input:hover,input:focus{
     background-color: white;
     color:gray;
@@ -79,8 +82,14 @@ input:hover,input:focus{
 
 .searchIcon{
     cursor: pointer;
-    height: 2vh;
-    width: 1.2vw;
-    margin-left: 1.5vw;
-    margin-top: 1vh;
+    margin-left: 2vw;
+    position: relative;
+    top: 0.8vh;
+}
+
+li:hover{
+    color: #c291e2;
+}
+.profile, .cart, .login, .logout{
+    padding-top: 0.6vh;
 }
