@@ -56,10 +56,10 @@ const cartSlice = createSlice({
 
         // Decrease the count of the item. If equal to or less than 0, remove it from cart table.
         removeItemFromCart(state, action){
-            const itemToAdd = { id:action.payload.id,
+            const itemToRemove = { id:action.payload.id,
                                 title:action.payload.title,
                                 email:action.payload.email,
-                                count:1,
+                                count:action.payload.count,
                                 price:action.payload.price,
                                 image: action.payload.image,
                                 href:action.payload.href};
@@ -73,14 +73,14 @@ const cartSlice = createSlice({
                     var cursor = e.target.result;
 
                     if (cursor){
-                        // Count is zero, remove the item
-                        if(cursor.value.count - 1 <= 0){
-                            cartStore.delete(itemToAdd.id);
+                        // Count is zero, remove the item || Delete button was clicked
+                        if(cursor.value.count - 1 <= 0 || action.payload.removeItemCompletely === true){
+                            cartStore.delete(itemToRemove.id);
                             alert("Removed");
                             window.location.reload(); // Rerender the cart component
                         }
                         else{
-                            cursor.update({...itemToAdd ,count:cursor.value.count - 1 });
+                            cursor.update({...itemToRemove ,count:cursor.value.count - 1 });
                             alert("Removed");
                         }
                     }

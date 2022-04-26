@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import DisplayCart from './DisplayCart';
+import cssClasses from './DisplayCart.module.css';
 
 // Get the items from cart table in userDB and display them using DisplayCart component
 export default function FetchCart() {
@@ -35,10 +36,10 @@ export default function FetchCart() {
         return <LoadingSpinner setCallSpinner={setCallSpinner} />
       else if(!callSpinner)
         return(
-          <>
+          <div className={cssClasses.emptyCartMessage}>
             <h2>Your Cart is empty!</h2>
           <Button onClick={()=>history.push('/shop/all')}>Shop Now</Button>
-          </>
+          </div>
         );
     }
     return (

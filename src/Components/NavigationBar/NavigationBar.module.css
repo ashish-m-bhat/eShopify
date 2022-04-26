@@ -90,6 +90,14 @@ input:hover,input:focus{
 li:hover{
     color: #c291e2;
 }
-.profile, .cart, .login, .logout{
-    padding-top: 0.6vh;
+
+.profileText, .cartText, .loginText, .logoutText{
+    position: relative;
+    top:2vh;
+    left:-1.8vw;
+    font-size: medium;
+}
+
+.cartText, .loginText{
+    left:-1.5vw;
 }

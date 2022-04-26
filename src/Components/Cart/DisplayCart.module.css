@@ -17,6 +17,7 @@
 
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .placeOrderWrapper{
@@ -31,4 +32,15 @@
 .placeOrderButton{
     margin-left: 15%;
     margin-bottom: 3vh;
+}
+.MdOutline{
+    cursor: pointer;
+}
+
+.emptyCartMessage{
+    height: 70vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
