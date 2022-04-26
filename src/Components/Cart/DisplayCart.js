@@ -3,6 +3,8 @@ import PlaceOrder from './PlaceOrder';
 import { cartActions } from '../../Store/CartStore';
 import {MdOutlineAdd, MdOutlineRemove} from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
+import cssClasses from './DisplayCart.module.css';
+import Card from '../../UI/Card/Card';
 
 // Displays each product in the cart, received by ProfilePage
 // Also calls PlaceOrder that has a 'Place Order' buttton clicking which sends the order to the DB.
@@ -34,19 +36,24 @@ export default function DisplayCart(props) {
  }
 
   return (
-    <div>
-        {props.cartArray.map(eachProduct => {
-                return(
-                    <div key={eachProduct.id}>
-                      <p>{eachProduct.title}</p>
-                      <a href={eachProduct.href}><img alt={eachProduct.title} src={eachProduct.image} height='100px' width='100px' /></a>
-                      <MdOutlineRemove size={30} onClick={()=>decreaseItemInCartHandler(eachProduct)}/>
-                      <MdOutlineAdd size={30} onClick={()=>increaseItemInCartHandler(eachProduct)}/>
-                      <p>{eachProduct.price} x {countMap.get(eachProduct.id)} = {eachProduct.price*countMap.get(eachProduct.id)}</p>
-                    </div>
-                )
-        })}
-        <PlaceOrder cartArray={props.cartArray} />
-    </div>
+    <>
+      <div className={cssClasses.eachItemWrapper}>
+          {props.cartArray.map(eachProduct => {
+                  return(
+                      <Card key={eachProduct.id} className={cssClasses.eachItem}>
+                        <p>{eachProduct.title}</p>
+                        <a href={eachProduct.href}><img alt={eachProduct.title} src={eachProduct.image} height='150px' width='150px' /></a>
+                        <span>
+                          <MdOutlineRemove size={30} onClick={()=>decreaseItemInCartHandler(eachProduct)}/>
+                          {" "}
+                          <MdOutlineAdd size={30} onClick={()=>increaseItemInCartHandler(eachProduct)}/>
+                        </span>
+                        <p>{eachProduct.price} x {countMap.get(eachProduct.id)} = {eachProduct.price*countMap.get(eachProduct.id)}</p>
+                      </Card>
+                  )
+          })}
+      </div>
+      <PlaceOrder cartArray={props.cartArray} />
+    </>
   )
 }

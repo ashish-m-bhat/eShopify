@@ -1,0 +1,34 @@
+.eachItemWrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.eachItem{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width:30vw;
+
+    background-color: transparent;
+    border: none;
+}
+
+.placeOrderWrapper{
+    position: sticky;
+    height: 15vh;
+    bottom: 3vh;
+    margin-left: 85%;
+    background-color:transparent;
+    padding: 2vh;
+    padding-left: 2vw;
+}
+.placeOrderButton{
+    margin-left: 15%;
+    margin-bottom: 3vh;
+}

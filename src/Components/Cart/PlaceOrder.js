@@ -4,7 +4,9 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp'
 import { cartActions } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
+import Card from '../../UI/Card/Card';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
+import cssClasses from './DisplayCart.module.css';
 
 // Gets the cartArray from DisplayCart and POSTs it to the Firebase DB
 export default function PlaceOrder(props) {
@@ -44,10 +46,10 @@ export default function PlaceOrder(props) {
         setIsLoading(true);
     }
   return (
-    <div>
+    <Card className={cssClasses.placeOrderWrapper}>
         {props.cartArray.length > 0 && <h2>Your total is $ {totalBill}</h2>}
-        <Button hidden={!props.cartArray.length} onClick={placeOrderHandler}>Place Order</Button>
+        <Button hidden={!props.cartArray.length} onClick={placeOrderHandler} className={cssClasses.placeOrderButton}>Place Order</Button>
         {isLoading && <LoadingSpinner/>}
-    </div>
+    </Card>
   )
 }

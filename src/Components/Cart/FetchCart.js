@@ -43,9 +43,9 @@ export default function FetchCart() {
     }
     return (
       <>
-        <h1>Cart of {username}</h1>
+        <h1 style={{'textAlign':'center'}}>Cart of {username}</h1>
         {/* Spinner is called meanwhile the cart array is populated */}
-        {callSpinner && <LoadingSpinner setCallSpinner={setCallSpinner} timeout={0.1}/>}
+        {callSpinner && <LoadingSpinner setCallSpinner={setCallSpinner} timeout={100}/>}
         {!callSpinner && <DisplayCart cartArray={cartArray} />}
       </>
     )
