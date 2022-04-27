@@ -47,8 +47,8 @@ const cartSlice = createSlice({
                     // If not, add it
                     else{
                         const writeReq = cartStore.add(itemToAdd);
-                        writeReq.onsuccess = e => alert("Added");
-                        writeReq.onerror = e => alert("Failed to Add");
+                        writeReq.onsuccess = e => alert("Added to Cart");
+                        writeReq.onerror = e => alert("Failed to Add to Cart");
                     }
                 }
             }
@@ -76,12 +76,12 @@ const cartSlice = createSlice({
                         // Count is zero, remove the item || Delete button was clicked
                         if(cursor.value.count - 1 <= 0 || action.payload.removeItemCompletely === true){
                             cartStore.delete(itemToRemove.id);
-                            alert("Removed");
+                            alert("Removed From the Cart");
                             window.location.reload(); // Rerender the cart component
                         }
                         else{
                             cursor.update({...itemToRemove ,count:cursor.value.count - 1 });
-                            alert("Removed");
+                            alert("Removed From the Cart");
                         }
                     }
                 }

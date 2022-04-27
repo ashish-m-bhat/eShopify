@@ -50,9 +50,11 @@ export default function DisplayCart(props) {
       <div className={cssClasses.eachItemWrapper}>
           {props.cartArray.map(eachProduct => {
                   return(
-                      <Card key={eachProduct.id} className={cssClasses.eachItem} onClick={() => history.push(eachProduct.href)}>
-                        <p>{eachProduct.title}</p>
-                        <img alt={eachProduct.title} src={eachProduct.image} height='150px' width='150px' />
+                      <Card key={eachProduct.id} className={cssClasses.eachItem}>
+                        <span onClick={() => history.push(eachProduct.href)} className={cssClasses.titleImage}>
+                          <p>{eachProduct.title}</p>
+                          <img alt={eachProduct.title} src={eachProduct.image} />
+                        </span>
                         <span>
                           <MdOutlineRemove size={30} onClick={()=>decreaseItemInCartHandler(eachProduct)} className={cssClasses.MdOutline}/>
                           {" "}
