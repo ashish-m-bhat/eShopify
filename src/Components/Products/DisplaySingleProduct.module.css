@@ -16,11 +16,14 @@ h1,p{
 }
 
 .eachProductImage{
-    height:55vh;
-    width: 30vw;
-    margin-top: 5vh;
-
-
+    height:50vh;
+    width: 27vw;
+    padding-top: 4vh;
+}
+.eachProductImageContainer{
+    height:65vh;
+    width: 40vw;
+    background-color: white;
     cursor: pointer;
 }
 

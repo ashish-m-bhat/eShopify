@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import FetchOrderHistory from '../Components/OrderHistory/FetchOrderHistory';
+import Card from '../UI/Card/Card';
+import cssClasses from '../Components/OrderHistory/DisplayOrderHistory.module.css';
 
 // Displays user info & order history
 export default function ProfilePage() {
@@ -10,8 +12,10 @@ export default function ProfilePage() {
   return (
     <>
       <h1>Profile of {username}</h1>
-      <p>Username : {username}</p>
-      <p> Email : {email} </p>
+      <Card className={cssClasses.userInfo}>
+        <p>Username : {username}</p>
+        <p> Email : {email} </p>
+      </Card>
       <FetchOrderHistory />
     </>
   )

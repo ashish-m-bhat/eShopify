@@ -1,0 +1,34 @@
+body{
+    text-align: center;
+}
+.userInfo{
+    height: 10vh;
+    width:15%;
+    margin:auto;
+    padding: 2vh;
+    margin-bottom: 5vh;
+    background-color: transparent;
+}
+
+.orderHistoryContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.orderHistoryContainer, .eachOrderHistory{
+    background-color: transparent;
+    line-height: 1.6;
+}
+
+.eachOrderHistory{
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 3vh;
+    width: 30vw;
+}
+
+.totalBill{
+    font-weight: bolder;
+}

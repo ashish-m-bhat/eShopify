@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { cartActions } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
+import Card from '../../UI/Card/Card';
 import StarRating from '../../UI/StarRating/StarRating';
 import cssClasses from './DisplaySingleProduct.module.css'
 
@@ -41,11 +42,16 @@ export default function DisplaySingleProduct() {
             dispatcher(cartActions.addItemToCart(item));
         }
     }
+    // Display the image and description of the product. The image opens in a new tabe when clicked
     return(
         <div className={cssClasses.productInfo}>
             <h1>{selectedProduct.title} </h1>
             <span className={cssClasses.imageAndDescription}>
-                <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
+                <a href={selectedProduct.image} target='_blank' rel='noreferrer'>
+                    <Card className={cssClasses.eachProductImageContainer}>
+                    <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
+                    </Card>
+                </a>
                 <span className={cssClasses.description}>
                     <p>{selectedProduct.description}</p>
                     <p>Price : $ {selectedProduct.price}</p>

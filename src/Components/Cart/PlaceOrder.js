@@ -26,10 +26,10 @@ export default function PlaceOrder(props) {
     const satisfyPostRequest =  useHttp(postFetchFunction);
 
     const cartArrayToBeOrdered = props.cartArray.map(eachProduct => {
-                                    const {title, count, email, price} = eachProduct;
+                                    const {id, title, count, email, price} = eachProduct;
                                     const totalItemPrice = price*count;
                                     totalBill += totalItemPrice;
-                                    return {email, title, count, totalItemPrice};
+                                    return {id, email, title, count, totalItemPrice};
                                 });
     totalBill = Math.round(totalBill);
     cartArrayToBeOrdered.push({totalBill});
