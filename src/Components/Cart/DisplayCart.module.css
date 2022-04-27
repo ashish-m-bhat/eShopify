@@ -17,7 +17,14 @@
 
     background-color: transparent;
     border: none;
+}
+
+.titleImage{
     cursor: pointer;
+}
+.titleImage img{
+    height:11vh;
+    width: 6vw;
 }
 
 .placeOrderWrapper{

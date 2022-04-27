@@ -14,7 +14,7 @@
 
 .logo {
     font-family: 'Lato', sans-serif;
-    font-size: 2vh;
+    font-size:large;
     color: white;
 }
 
@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size:1.9vh;
+    font-size:large;
 }
 
 .header li {
