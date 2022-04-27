@@ -29,15 +29,14 @@
 
 .placeOrderWrapper{
     position: sticky;
-    height: 15vh;
     bottom: 3vh;
-    margin-left: 85%;
+    margin-left: 82%;
+    margin-right: 2%;
     background-color:transparent;
     padding: 2vh;
-    padding-left: 2vw;
 }
 .placeOrderButton{
-    margin-left: 15%;
+    margin-left: 10%;
     margin-bottom: 3vh;
 }
 .MdOutline{
