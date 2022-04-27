@@ -1,5 +1,6 @@
 .productsSection{
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     margin-top: 5vh;
     margin-bottom: 15vh;
 
@@ -9,40 +10,32 @@
 
 }
 .eachProduct{
-    width: 20vw;
-    height: 35vh;
-    margin: 2%;
+    width: 25%;
+    height: auto;
+    margin-bottom:3%;
+    margin-right: 3%;
     padding: 0.5%;
     text-align: center;
     font-size: large;
     cursor: pointer;
 
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.innerCard{
-    width: 18vw;
-    height: auto;
     background-color: white;
     color: gray;
     border-radius: 1.2vw;
+    border: none;
+    box-shadow: none;
+
 }
-.innerCard:hover{
-    width: 20vw;
-    height: 35vh;
+
+.eachProduct:hover{
     background-color: gray;
     color: white;
     border: 1px solid silver;
 }
 
 .eachProduct img{
-    height: 150px;
-    width: 150px;
+    height: 20vh;
+    width: 10vw;
 }
 
 .slct {

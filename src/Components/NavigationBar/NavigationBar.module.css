@@ -1,5 +1,5 @@
 .header {
-    width: 100%;
+    width: 100vw;
     height: 8vh;
     background-color: gray;
     box-shadow: 0 1px 4px rgba(4, 84, 204, 0.952);
@@ -9,6 +9,7 @@
     align-items: center;
     position:sticky;
     top:0.5vh;
+    padding-bottom: 1vh;
 }
 
 .logo {

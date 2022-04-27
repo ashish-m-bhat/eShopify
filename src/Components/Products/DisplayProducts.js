@@ -85,12 +85,10 @@ export default function DisplayProducts(props) {
                 {props.productsToDisplay.map(eachProduct => {
                     return(
                         <Card key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id, history)} className={cssClasses.eachProduct}>
-                            <div className={cssClasses.innerCard}>
-                                <p>{eachProduct.title} </p>
-                                <img src={eachProduct.image} alt={eachProduct.title} height={"10vg"} width={"10vw"} loading="lazy"/>
+                            <p>{eachProduct.title} </p>
+                            <img src={eachProduct.image} alt={eachProduct.title} height={"10vg"} width={"10vw"} loading="lazy"/>
                             <p>${eachProduct.price}</p>
                             <StarRating rating={eachProduct.rating.rate} size={20}/>
-                            </div>
                         </Card>
                     )
                 })}
