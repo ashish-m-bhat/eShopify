@@ -43,6 +43,7 @@ const cartSlice = createSlice({
                     if (cursor){
                         cursor.update({...itemToAdd ,count:cursor.value.count + 1 });
                         alert("Added");
+                        window.location.reload(); // Rerender the cart component
                     }
                     // If not, add it
                     else{
@@ -82,6 +83,7 @@ const cartSlice = createSlice({
                         else{
                             cursor.update({...itemToRemove ,count:cursor.value.count - 1 });
                             alert("Removed From the Cart");
+                            window.location.reload(); // Rerender the cart component
                         }
                     }
                 }
