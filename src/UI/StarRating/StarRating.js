@@ -9,10 +9,10 @@ export default function StarRating(props) {
             const starsToBeHighlighted = Math.round(props.rating);
 
             return (
-            <>
+            <React.Fragment key={Math.random()*1000}>
                 <FaStar size={props.size} color={index <= starsToBeHighlighted?"gold": "silver"} />
                 {" "}
-            </>
+            </React.Fragment>
             );
         })
         }
