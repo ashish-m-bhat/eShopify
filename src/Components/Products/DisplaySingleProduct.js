@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { cartActions } from '../../Store/CartStore';
+import { addItemToCart } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import StarRating from '../../UI/StarRating/StarRating';
@@ -39,7 +39,7 @@ export default function DisplaySingleProduct() {
         }
         else{
             const item = {id:+selectedProduct.id, email:email, title:selectedProduct.title, image:selectedProduct.image, href:history.location.pathname, price:selectedProduct.price};
-            dispatcher(cartActions.addItemToCart(item));
+            dispatcher(addItemToCart(item));
         }
     }
     // Display the image and description of the product. The image opens in a new tabe when clicked

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
-import { cartActions } from '../../Store/CartStore';
+import { instantiateDB } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import cssClasses from './AuthForm.module.css';
@@ -26,7 +26,7 @@ export default function AuthForm(){
     dispather(authActions.login(data));
 
     // After login, instantiate the DB which has 'cart' table.
-    dispather(cartActions.instantiateDB());
+    dispather(instantiateDB());
 
     // Stop the Spinner
     setIsLoading(false);
