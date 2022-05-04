@@ -1,25 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+
+// Thunk Middleware, gets called by LoadAllProductsFirstTime()
+export const getProducts = createAsyncThunk('products/getProducts', async () => {
+                                                                        return fetch('https://fakestoreapi.com/products').then(res => res.json( ))
+                                                                    }
+);
 
 // Slice for products array
 // setAllProducts is called using the fetchProducts() thunk in LoadAllProductsFirstTime()
 const productsSlice = createSlice({
     name:'products',
-    initialState:{allProductsArray:[]},
-    reducers:{
-        setAllProducts(state, action){
+    initialState:{allProductsArray:[],status:null},
+    extraReducers:{
+        [getProducts.pending] : (state) => {
+            state.status = 'pending';
+        },
+        [getProducts.fulfilled] : (state, action) => {
             state.allProductsArray = action.payload;
+            state.status = 'fulfilled';
+        },
+        [getProducts.rejected] : (state) =>{
+            state.status = 'rejected';
         }
+
     }
 });
 
-// Thunk Middleware, gets called by LoadAllProductsFirstTime()
-export function fetchProducts(){
-    return async dispatch => {
-       const response = await fetch('https://fakestoreapi.com/products');
-       const data = await response.json();
-       dispatch(productsSlice.actions.setAllProducts(data));
-    }
-}
-
 export default productsSlice;
-export const productsActions = productsSlice.actions;

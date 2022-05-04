@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp'
-import { cartActions } from '../../Store/CartStore';
+import { emptyCart } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
@@ -19,7 +19,7 @@ export default function PlaceOrder(props) {
         // Stop the Loading Spinner
         setIsLoading(false);
         alert("Order Placed");
-        dispatcher(cartActions.emptyCart());
+        dispatcher(emptyCart());
         history.push('/profile')
     },[dispatcher, history]);
 
