@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+Hey there! I invite you to browse [eshopify](https://eshopifyy.netlify.app) .
+Feel free to provide any sort of feedback @ ashish.m.bhat98@gmail.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+eshopify is an e-commerce website built with React and styled with CSS along with react icons. Here are some of the key features:
 
-## Available Scripts
+      - The products are obtained from fakeAPI store using calls to the fetch API
 
-In the project directory, you can run:
+      - Products are categorized into Men's, Women's, Electronics, Jewelery
 
-### `npm start`
+      - The Home Page displays only the popular products
+                           
+      - Products can be sorted according to popularity or price
+      
+      - A customer can browse the products without needing to sign up
+      
+      - Once a customer tries to add a product to the cart, they would be redirected to the authentication page
+        
+      - The app authenticates the user with Google's Firebase. On sucess, they are redirected to the previously browsed page
+      
+      - Cart items are stored in the browser's indexedDB
+      
+      - Order history is saved in Google's Firebase Realtime DB & can be seen in the user's profile page
+      
+      
+Here are some of the snips:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+                                          Home Page
+![Screenshot (67)](https://user-images.githubusercontent.com/61205415/179419820-9b9bf6e4-6c3f-4934-ba31-00dc8d796c6d.png)
+![Screenshot (66)](https://user-images.githubusercontent.com/61205415/179419894-be574b26-e174-4d5b-b80a-96f612b5d1c6.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+                                          Signup Page
+![Screenshot (65)](https://user-images.githubusercontent.com/61205415/179419825-50191fb1-c114-4c67-886f-e28ff9768cd0.png)
 
-### `npm test`
+      
+                                          Login Page
+![Screenshot (64)](https://user-images.githubusercontent.com/61205415/179419834-1172a9ac-a79f-4101-8e34-ce6f0605caa1.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+                                          Search Results
+![Screenshot (70)](https://user-images.githubusercontent.com/61205415/179419862-f78516cb-3ed0-4226-aff2-91b83f81fd1e.png)
+![Screenshot (73)](https://user-images.githubusercontent.com/61205415/179419866-0450a76f-1aee-4fe3-b9df-4302332fdab5.png)
 
-### `npm run build`
+      
+                                          Cart Page
+![Screenshot (74)](https://user-images.githubusercontent.com/61205415/179419905-87f2a71a-f0bc-4d63-b768-e25f695cbdd6.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot (76)](https://user-images.githubusercontent.com/61205415/179419976-67fca249-fe79-433b-9497-d9e7ed2aabfe.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+                                          Profile Page
+![Screenshot (75)](https://user-images.githubusercontent.com/61205415/179419906-7ba5272f-f373-4c19-9589-e0943f59dc84.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+      
+      
