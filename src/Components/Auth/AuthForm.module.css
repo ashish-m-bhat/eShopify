@@ -1,12 +1,12 @@
 .auth {
     margin-top: 19vh;
     height: auto;
-    margin-left: 39vw;
+    margin-left: 35vw;
     width: 25vw;
     padding: 2vw;
     border-radius: 7px;
-    background-color: #38015c;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    background-color: #7502c2;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
     text-align: center;
     color: white;
   }

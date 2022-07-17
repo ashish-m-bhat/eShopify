@@ -10,6 +10,8 @@ body{
     padding: 2vh;
     margin-bottom: 5vh;
     background-color: transparent;
+    border: 1px solid gray;
+    box-shadow: rgb(241, 241, 241) 0px 0px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .orderHistoryContainer{
@@ -21,16 +23,25 @@ body{
 
 .orderHistoryContainer, .eachOrderHistory{
     background-color: transparent;
-    line-height: 1.6;
+    line-height: 2;
+    width: 100vw;
+    box-shadow: rgb(241, 241, 241) 0px 0px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .eachOrderHistory{
     margin-top: 3vh;
     margin-bottom: 3vh;
     padding: 3vh;
-    width: 30vw;
+    width: 40vw;
 }
 
 .totalBill{
     font-weight: bolder;
+}
+
+table, th, td{
+    padding: 20px;
+    border-top: 1px groove rgb(185, 176, 176);
+    border-bottom: 1px groove rgb(185, 176, 176);
+    border-collapse: collapse;
 }

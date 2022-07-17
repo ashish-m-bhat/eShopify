@@ -68,7 +68,7 @@ export default function DisplayProducts(props) {
         if(callSpinner)
             return <LoadingSpinner setCallSpinner={setCallSpinner} timeout={4000}/>
         else  // callSpinner is set to false after 1s in the LoadingSpinner component
-            return <h2>No items To Display!</h2>
+            return <h1 className={cssClasses.noItemsToDisplay}>No items To Display!</h1>
    }
 
     return (

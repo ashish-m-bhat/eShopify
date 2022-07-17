@@ -1,6 +1,6 @@
 .productsSection{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     margin-top: 5vh;
     margin-bottom: 15vh;
 
@@ -20,17 +20,17 @@
     cursor: pointer;
 
     background-color: white;
+    border: 1px solid white;
     color: gray;
     border-radius: 1.2vw;
     border: none;
-    box-shadow: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 
 }
 
 .eachProduct:hover{
-    background-color: gray;
-    color: white;
-    border: 1px solid silver;
+    border: 5px solid silver;
+    box-shadow: rgba(183, 183, 192, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .eachProduct img{
@@ -56,3 +56,7 @@ select {
     border-radius: 1vh;
 }
 
+.noItemsToDisplay{
+    margin-top: 20vh;
+    font-size:5vw;
+}

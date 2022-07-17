@@ -10,7 +10,12 @@ export default function DisplayOrderHistory(props) {
     <Card className={cssClasses.orderHistoryContainer}>
       {props.orderHistoryArray.map((eachOrder) => {
         return (
-          <Card key={Math.random() * 1000} className={cssClasses.eachOrderHistory}>
+          <table key={Math.random() * 1000} className={cssClasses.eachOrderHistory}>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Cost</th>
+            </tr>
             {eachOrder.map((eachProduct) => {
               if (eachProduct.totalBill) {
                 return (
@@ -19,14 +24,12 @@ export default function DisplayOrderHistory(props) {
                   </span>);
               }
               return (
-                <div key={Math.random() * 1000}>
-                  <p>
-                    <span onClick={() => history.push(`shop/${eachProduct.id}`)} style={{'cursor':'pointer'}}>{eachProduct.title}</span> x {eachProduct.count} =${" "} {eachProduct.totalItemPrice}
-                  </p>
-                </div>
+                <tr key={Math.random() * 1000}>
+                    <td onClick={() => history.push(`shop/${eachProduct.id}`)} style={{'cursor':'pointer'}}>{eachProduct.title}</td> <td>{eachProduct.count}</td> <td>$ {eachProduct.totalItemPrice}</td>
+                </tr>
               );
             })}
-          </Card>
+          </table>
         );
       })}
     </Card>
