@@ -43,10 +43,8 @@ Here are some of the snips:
                                           Cart Page
 ![Screenshot (74)](https://user-images.githubusercontent.com/61205415/179419905-87f2a71a-f0bc-4d63-b768-e25f695cbdd6.png)
 
-![Screenshot (76)](https://user-images.githubusercontent.com/61205415/179419976-67fca249-fe79-433b-9497-d9e7ed2aabfe.png)
-
+![image](https://user-images.githubusercontent.com/61205415/180409343-0436610c-f778-44b6-9320-bc4734bc540f.png)
                                           Profile Page
-![Screenshot (75)](https://user-images.githubusercontent.com/61205415/179419906-7ba5272f-f373-4c19-9589-e0943f59dc84.png)
-
+![image](https://user-images.githubusercontent.com/61205415/180409651-f927d1c9-5839-4785-bc29-48f301248663.png)
       
       
