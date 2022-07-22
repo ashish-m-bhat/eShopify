@@ -1,5 +1,5 @@
 .productsSection{
-    width: 100vw;
+    width: 98vw;
     height: auto;
     margin-top: 5vh;
     margin-bottom: 15vh;
@@ -40,7 +40,7 @@
 
 .slct {
     position: relative;
-    left:87vw;
+    left:85vw;
     width: 10vw;
     height: 4vh;
     overflow:hidden;
@@ -67,6 +67,7 @@ select {
 
 @media only screen and (max-width:1000px){
     .eachProduct{
+        background-color: white;
         width: 80%;
     }
     .eachProduct img{
