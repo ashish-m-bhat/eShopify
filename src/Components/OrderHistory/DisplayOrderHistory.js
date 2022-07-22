@@ -24,8 +24,8 @@ export default function DisplayOrderHistory(props) {
                   </span>);
               }
               return (
-                <tr key={Math.random() * 1000}>
-                    <td onClick={() => history.push(`shop/${eachProduct.id}`)} style={{'cursor':'pointer'}}>{eachProduct.title}</td> <td>{eachProduct.count}</td> <td>$ {eachProduct.totalItemPrice}</td>
+                <tr key={Math.random() * 1000} onClick={() => history.push(`shop/${eachProduct.id}`)} style={{'cursor':'pointer'}}>
+                    <td>{eachProduct.title}</td> <td>{eachProduct.count}</td> <td>$ {eachProduct.totalItemPrice}</td>
                 </tr>
               );
             })}

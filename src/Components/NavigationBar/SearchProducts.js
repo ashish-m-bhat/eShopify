@@ -19,7 +19,7 @@ export default function SearchProducts() {
     <form onSubmit={searchProductsHandler}>
       <input type="text" placeholder="Search" value={searchValue} onChange={(event)=>setSearchValue(event.target.value)}/>
       <span className={cssClasses.searchIcon}>
-        <MdSearch size={35} onClick={searchProductsHandler} />
+        <MdSearch onClick={searchProductsHandler} />
       </span>
     </form>
   );

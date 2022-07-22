@@ -50,3 +50,22 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+@media only screen and (max-width:1000px) {
+    .eachItem{
+        background-color: rgba(255, 255, 255, 0.801);
+        color: black;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        width:70%;
+    }
+    .titleImage img{
+        height:11vh;
+        width: 25vw;
+    }
+    .placeOrderWrapper{
+        position: relative;
+        bottom: 0vh;
+        margin:0;
+    }
+}

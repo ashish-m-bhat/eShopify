@@ -49,7 +49,7 @@ export default function DisplaySingleProduct() {
             <span className={cssClasses.imageAndDescription}>
                 <a href={selectedProduct.image} target='_blank' rel='noreferrer'>
                     <Card className={cssClasses.eachProductImageContainer}>
-                    <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
+                        <img src={selectedProduct.image} alt='' className={cssClasses.eachProductImage}/>
                     </Card>
                 </a>
                 <span className={cssClasses.description}>

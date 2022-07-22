@@ -22,7 +22,7 @@ export default function AllProductsPage() {
 // If the redux array is tried to be mutated, it error out s
   return (
     <React.Fragment>
-      {searchParams && <h2>Search Results for <span style={{'fontSize':'2vw', 'color':'lightGreen'}}>{searchParams}</span></h2>}
+      {searchParams && <h2>Search Results for <span style={{'fontSize':'2vh', 'color':'lightGreen'}}>{searchParams}</span></h2>}
       <DisplayProducts productsToDisplay={[...allProducts]} />
     </React.Fragment>
   )

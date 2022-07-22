@@ -43,3 +43,27 @@ h1,p{
     justify-content: space-evenly;
     align-items: center;
 }
+
+@media only screen and (max-width:1000px){
+    h1{
+        font-size: large;
+    }
+    .imageAndDescription{
+        margin-top: 6vh;
+        flex-flow: column nowrap;
+    }
+    .eachProductImageContainer, .eachProductImage{
+        height:25vh;
+        width: 50vw;
+        margin: auto;
+        border-radius: 0;
+    }
+    .description{
+        text-align:left;
+        padding-top: 10vh;
+        width: 100%;
+        font-size: small;
+        line-height: 200%;
+    }
+
+}

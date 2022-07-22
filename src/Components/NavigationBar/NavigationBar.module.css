@@ -87,12 +87,16 @@ input:hover,input:focus{
     margin-left: 2vw;
     position: relative;
     top: 0.8vh;
+    font-size: 2vw;
 }
 
 li:hover{
     color: #c291e2;
 }
 
+.profile, .cart, .login, .logout{
+    font-size: x-large;
+}
 .profileText, .cartText, .loginText, .logoutText{
     position: relative;
     top:2vh;
@@ -102,4 +106,40 @@ li:hover{
 
 .cartText, .loginText{
     left:-1.5vw;
+}
+
+@media screen and (max-width:1000px) {
+    .header{
+        height: 6vh;
+    }
+    .logo h1{
+        font-size: 3vw;
+        margin-right: -2vw;
+    }
+    .header ul{
+        width: 100%;
+        font-size:2vw;
+    }
+    .header li{
+        margin: 1vw;
+    }
+    .header input{
+        height: 2vh;
+        top:0vh;
+        border-radius: 2px;
+        width: 10vw;
+    }
+    .searchIcon{
+        position: relative;
+        top: 0.5vh;
+        font-size: 4vw;
+    }
+
+    .profile, .cart, .login, .logout{
+        font-size: 4vw;
+    }
+    .profileText, .cartText, .loginText, .logoutText{
+        display: none;
+    }
+
 }

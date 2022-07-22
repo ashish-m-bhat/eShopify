@@ -44,7 +44,7 @@ export default function NavigationBar() {
           <li className={cssClasses.login}>
             {!isUserLoggedIn && (
               <NavLink to="/auth">
-                <MdOutlineLogin size={25} color="gray" />
+                <MdOutlineLogin  color="gray" />
                 <span className={cssClasses.loginText}>Login</span>
               </NavLink>
             )}
@@ -53,7 +53,7 @@ export default function NavigationBar() {
           <li className={cssClasses.profile}>
             {isUserLoggedIn && (
               <NavLink to="/profile">
-                <CgProfile size={25} />
+                <CgProfile  />
                 <span className={cssClasses.profileText}>Profile</span>
               </NavLink>
             )}
@@ -62,7 +62,7 @@ export default function NavigationBar() {
           <li className={cssClasses.cart}>
             {isUserLoggedIn && (
               <NavLink to="/cart">
-                <MdOutlineShoppingCart size={25} color="gray" />
+                <MdOutlineShoppingCart color="gray" />
                 <span className={cssClasses.cartText}>Cart</span>
               </NavLink>
             )}
@@ -71,7 +71,7 @@ export default function NavigationBar() {
           <li className={cssClasses.logout}>
             {isUserLoggedIn && (
               <NavLink to="/" onClick={() => setCallLogout(true)}>
-                <MdOutlineLogout size={25} color="gray" />
+                <MdOutlineLogout color="gray" />
                 <span className={cssClasses.logoutText}>Logout</span>
               </NavLink>
             )}

@@ -101,54 +101,42 @@ const cartSlice = createSlice({
   extraReducers:{
         [instantiateDB.pending]:(state) =>{
             state.status = 'instantiateDB pending';
-            console.log('instantiateDB pending');
         },
         [instantiateDB.fulfilled]:(state) =>{
             state.status = 'instantiateDB fulfilled';
-            console.log('instantiateDB fulfilled');
         },
         [instantiateDB.rejected]:(state) =>{
             state.status = 'instantiateDB rejected';
-            console.log('instantiateDB rejected');
         },
 
         [addItemToCart.pending]:(state) =>{
             state.status = 'addItemToCart pending';
-            console.log('addItemToCart pending');
         },
         [addItemToCart.fulfilled]:(state) =>{
             state.status = 'addItemToCart fulfilled';
-            console.log('addItemToCart fulfilled');
         },
         [addItemToCart.rejected]:(state) =>{
             state.status = 'addItemToCart rejected';
-            console.log('addItemToCart rejected');
         },
 
         [removeItemFromCart.pending]:(state) =>{
             state.status = 'removeItemFromCart pending';
-            console.log('removeItemFromCart pending');
         },
         [removeItemFromCart.fulfilled]:(state) =>{
             state.status = 'removeItemFromCart fulfilled';
-            console.log('removeItemFromCart fulfilled');
         },
         [removeItemFromCart.rejected]:(state) =>{
             state.status = 'removeItemFromCart rejected';
-            console.log('removeItemFromCart rejected');
         },
 
         [emptyCart.pending]:(state) =>{
             state.status = 'emptyCart pending';
-            console.log('emptyCart pending');
         },
         [emptyCart.fulfilled]:(state) =>{
             state.status = 'emptyCart fulfilled';
-            console.log('emptyCart fulfilled');
         },
         [emptyCart.rejected]:(state) =>{
             state.status = 'emptyCart rejected';
-            console.log('emptyCart rejected');
         },
 
 

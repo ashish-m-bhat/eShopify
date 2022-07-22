@@ -60,3 +60,22 @@ select {
     margin-top: 20vh;
     font-size:5vw;
 }
+.title{
+    width: 100%;
+    background-color: aqua;
+}
+
+@media only screen and (max-width:1000px){
+    .eachProduct{
+        width: 80%;
+    }
+    .eachProduct img{
+        height: 15vh;
+        width: 30vw;
+    }
+    .slct {
+        left:52vw;
+        width: 35vw;
+    }
+
+}

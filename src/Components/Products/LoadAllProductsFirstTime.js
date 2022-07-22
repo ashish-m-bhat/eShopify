@@ -4,7 +4,6 @@ import { getProducts } from '../../Store/ProductsStore';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 export default function LoadAllProductsFirstTime() {
-  console.log("Load Products for first time");
     const dispatcher = useDispatch();
     const loadProductsStatus = useSelector(state => state.products.status);
 
