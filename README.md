@@ -46,5 +46,10 @@ Here are some of the snips:
 ![image](https://user-images.githubusercontent.com/61205415/180409343-0436610c-f778-44b6-9320-bc4734bc540f.png)
                                           Profile Page
 ![image](https://user-images.githubusercontent.com/61205415/180409651-f927d1c9-5839-4785-bc29-48f301248663.png)
+
+
+                                          Mobile device
+![image](https://user-images.githubusercontent.com/61205415/180734105-2e8225a5-034a-4d81-8872-45a2b1f4ca89.png)
+
       
       
