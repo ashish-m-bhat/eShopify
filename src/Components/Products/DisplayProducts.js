@@ -66,7 +66,7 @@ export default function DisplayProducts(props) {
    // But even after 1s if the productsToDisplay is still empty, display Not Found message.
    if(!props.productsToDisplay.length){
         if(callSpinner)
-            return <LoadingSpinner setCallSpinner={setCallSpinner} timeout={4000}/>
+            return <LoadingSpinner setCallSpinner={setCallSpinner} timeout={2400}/>
         else  // callSpinner is set to false after 1s in the LoadingSpinner component
             return <h1 className={cssClasses.noItemsToDisplay}>No items To Display!</h1>
    }
