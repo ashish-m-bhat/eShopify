@@ -72,7 +72,7 @@ export default function AuthForm(){
     // Start the spinner
     setIsLoading(true);
 
-    const apiKey='AIzaSyCrzPJtrHA9MXPDPItT9PgecxyXmXAjVbc';
+    const apiKey='AIzaSyA357y-kI6368NgHXnMI5pW77y71GqpGuw';
     const url= isLogin?'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=':'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
 
     const requestConfig = {url:url+apiKey, method:'POST', body:JSON.stringify({email:emailRef.current.value,password:passwordRef.current.value, returnSecureToken:true}), headers:{'Content-type':'application/json'}}
