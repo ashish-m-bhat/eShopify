@@ -5,6 +5,7 @@ import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import { useSelector } from "react-redux";
 import LoadAllProductsFirstTime from "./Components/Products/LoadAllProductsFirstTime";
 import DisplaySingleProduct from "./Components/Products/DisplaySingleProduct";
+import ScrollToTop from "./UI/ScrollToTop/ScrollToTop";
 
 // Takes the responsibility of setting up routes, some of which depend on the login state
 function App() {
@@ -18,6 +19,8 @@ function App() {
 {/* Load the products through fetch and store initialize the redux store*/}
       <LoadAllProductsFirstTime />
 
+{/* Always scroll to the top when a page render */}
+      <ScrollToTop />
       <Switch>
 
         <Route path="/" exact>
