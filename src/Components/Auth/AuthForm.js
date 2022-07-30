@@ -6,6 +6,7 @@ import { authActions } from '../../Store/AuthStore';
 import { instantiateDB } from '../../Store/CartStore';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
+import ErrorModal from '../../UI/Modal/ErrorModal';
 import cssClasses from './AuthForm.module.css';
 
 // Has a form for Login Or Signup
@@ -15,6 +16,8 @@ import cssClasses from './AuthForm.module.css';
 export default function AuthForm(){
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [callErrorModal, setCallErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const emailRef = useRef();
   const passwordRef = useRef();
   const formRef = useRef();
@@ -23,17 +26,32 @@ export default function AuthForm(){
 
   // Function to be executed after fetch is satified
   const postFetchFunction = useCallback((data) =>{
-    dispather(authActions.login(data));
 
-    // After login, instantiate the DB which has 'cart' table.
-    dispather(instantiateDB());
+    if(data?.error?.code === 400){
+      if(data.error.message === "EMAIL_NOT_FOUND" ||  data.error.message === "INVALID_EMAIL"){
+        setErrorMessage('EMAIL NOT FOUND');
+      }
+      else if(data.error.message === "INVALID_PASSWORD"){
+        setErrorMessage('Wrong Password');
+      }
+      // Stop the Spinner
+      setIsLoading(false);
+      setCallErrorModal(true);
+    }
+    else{
+      dispather(authActions.login(data));
 
-    // Stop the Spinner
-    setIsLoading(false);
+      // After login, instantiate the DB which has 'cart' table.
+      dispather(instantiateDB());
 
-    // Once logged in, go back. This is because, if user isn't logged in he is redirected to login when he tries to add a product to cart
-    // Hence we must take him back to the same page.
-    history.goBack();
+      // Stop the Spinner
+      setIsLoading(false);
+
+      // Once logged in, go back. This is because, if user isn't logged in he is redirected to login when he tries to add a product to cart
+      // Hence we must take him back to the same page.
+      history.goBack();
+    }
+
   },[dispather, history]);
 
   // Function to clear Form
@@ -54,7 +72,7 @@ export default function AuthForm(){
     // Start the spinner
     setIsLoading(true);
 
-    const apiKey='AIzaSyA357y-kI6368NgHXnMI5pW77y71GqpGuw';
+    const apiKey='AIzaSyCrzPJtrHA9MXPDPItT9PgecxyXmXAjVbc';
     const url= isLogin?'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=':'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
 
     const requestConfig = {url:url+apiKey, method:'POST', body:JSON.stringify({email:emailRef.current.value,password:passwordRef.current.value, returnSecureToken:true}), headers:{'Content-type':'application/json'}}
@@ -93,6 +111,7 @@ export default function AuthForm(){
         </div>
       </form>
       {isLoading && <LoadingSpinner />}
+      {callErrorModal && <ErrorModal closeErrorModal={()=>setCallErrorModal(false)} title={'Oops!'} message={errorMessage} />}
     </section>
   );
 };
