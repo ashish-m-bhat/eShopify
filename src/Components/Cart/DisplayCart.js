@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import cssClasses from './DisplayCart.module.css';
 import Card from '../../UI/Card/Card';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 // Displays each product in the cart, received by ProfilePage
 // Also calls PlaceOrder that has a 'Place Order' buttton clicking which sends the order to the DB.
 
@@ -53,4 +55,13 @@ export default function DisplayCart(props) {
       <PlaceOrder cartArray={props.cartArray}/>
     </>
   )
+}
+
+
+DisplayCart.propTypes = {
+  cartArray:PropTypes.arrayOf(PropTypes.shape({
+    count:PropTypes.number,
+    href:PropTypes.string,
+    price:PropTypes.number
+  }))
 }
