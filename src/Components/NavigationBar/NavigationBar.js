@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Logout from "../Auth/Logout";
 import SearchProducts from "./SearchProducts";
 import { CgProfile } from "react-icons/cg";
 import {MdOutlineShoppingCart, MdOutlineLogin, MdOutlineLogout} from "react-icons/md";
 import cssClasses from './NavigationBar.module.css';
-import { useAppSelector } from "../../Store/hooks";
 
 export default function NavigationBar() {
   const [callLogout, setCallLogout] = useState(false);
-  const isUserLoggedIn = useAppSelector(state => state.auth.isUserLoggedIn);
+  const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
   return (
     <header className={cssClasses.header}>
       <Link to="/" className={cssClasses.logo}>

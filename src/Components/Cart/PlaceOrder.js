@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react'
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp'
 import { emptyCart } from '../../Store/CartStore';
-import { useAppDispatch } from '../../Store/hooks';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
@@ -12,7 +12,7 @@ import cssClasses from './DisplayCart.module.css';
 export default function PlaceOrder(props) {
     const [isLoading, setIsLoading] = useState(false);
     const history =useHistory();
-    const dispatcher = useAppDispatch();
+    const dispatcher = useDispatch();
     let totalBill = 0;
     // Function to be excuted after order has been placed. Empty the cart and redirect to /profile
     const postFetchFunction = useCallback((data) => {
