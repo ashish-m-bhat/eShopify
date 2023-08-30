@@ -3,19 +3,19 @@ import PlaceOrder from './PlaceOrder';
 import { addItemToCart, removeItemFromCart } from '../../Store/CartStore';
 import {MdOutlineAdd, MdOutlineRemove} from 'react-icons/md';
 import {RiDeleteBin6Line} from 'react-icons/ri';
-import { useDispatch, useSelector } from 'react-redux';
 import cssClasses from './DisplayCart.module.css';
 import Card from '../../UI/Card/Card';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useAppDispatch, useAppSelector } from '../../Store/hooks';
 
 // Displays each product in the cart, received by ProfilePage
 // Also calls PlaceOrder that has a 'Place Order' buttton clicking which sends the order to the DB.
 
 export default function DisplayCart(props) {
-  const dispatcher = useDispatch();
+  const dispatcher = useAppDispatch();
   const history = useHistory();
-  const email = useSelector(state => state.auth.email);
+  const email = useAppSelector(state => state.auth.email);
 
   // Increase an item's count
   const increaseItemInCartHandler = (productToIncrease) =>{
