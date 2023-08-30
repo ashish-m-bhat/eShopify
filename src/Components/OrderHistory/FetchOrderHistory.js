@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
 import useHttp from '../../CustomHooks/useHttp';
 import DisplayOrderHistory from './DisplayOrderHistory';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
+import { useAppSelector } from '../../Store/hooks';
 
 // Fetches the order history for the user
 export default function FetchOrderHistory() {
     const [orderHistoryArray, setOrderHistoryArray]=useState([]);
     const [callSpinner, setCallSpinner] = useState(true);
-    const email = useSelector(state => state.auth.email);
+    const email = useAppSelector(state => state.auth.email);
 
     // orderHistoryArray is an array of arrays.
     // Each element of orderHistoryArray is an array which corresponds to an order. The elements within this array are objects which are different products

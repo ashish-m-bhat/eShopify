@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useAppSelector } from '../../Store/hooks';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import DisplayCart from './DisplayCart';
@@ -8,7 +8,7 @@ import cssClasses from './DisplayCart.module.css';
 
 // Get the items from cart table in userDB and display them using DisplayCart component
 export default function FetchCart() {
-    const username = useSelector(state => state.auth.username);
+    const username = useAppSelector(state => state.auth.username);
     const [cartArray, setCartArray] = useState([]);
     const [callSpinner, setCallSpinner] = useState(true);
     const history = useHistory();
