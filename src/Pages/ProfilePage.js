@@ -1,13 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import FetchOrderHistory from '../Components/OrderHistory/FetchOrderHistory';
 import Card from '../UI/Card/Card';
 import cssClasses from '../Components/OrderHistory/DisplayOrderHistory.module.css';
-import { useAppSelector } from '../Store/hooks';
 
 // Displays user info & order history
 export default function ProfilePage() {
-  const username = useAppSelector(state => state.auth.username);
-  const email = useAppSelector(state => state.auth.email);
+  const username = useSelector(state => state.auth.username);
+  const email = useSelector(state => state.auth.email);
 
   return (
     <>

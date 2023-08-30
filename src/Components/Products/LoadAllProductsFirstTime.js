@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../Store/hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Store/ProductsStore';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 
 export default function LoadAllProductsFirstTime() {
-    const dispatcher = useAppDispatch();
-    const loadProductsStatus = useAppSelector(state => state.products.status);
+    const dispatcher = useDispatch();
+    const loadProductsStatus = useSelector(state => state.products.status);
 
     // indirectly call setAllProductsArray using the thunk fetchProducts()
     useEffect(() => {

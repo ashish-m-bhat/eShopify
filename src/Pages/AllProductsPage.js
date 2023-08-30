@@ -1,7 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import DisplayProducts from '../Components/Products/DisplayProducts';
-import { useAppSelector } from '../Store/hooks';
 
 // Used to display all the products
 // Also used to display products based on search by extracting the query parameters
@@ -10,7 +10,7 @@ import { useAppSelector } from '../Store/hooks';
 export default function AllProductsPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search).get('search');
-  let allProducts = useAppSelector(state => state.products.allProductsArray);
+  let allProducts = useSelector(state => state.products.allProductsArray);
 
   if(searchParams){
     const filteredProducts = allProducts.filter(eachProduct => eachProduct.title.toLowerCase().includes(searchParams.toLowerCase()) ||

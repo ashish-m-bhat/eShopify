@@ -2,14 +2,14 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import './App.css'
 import {AllProductsPage, AuthPage, ElectronicsPage, HomePage, JeweleryPage, MensPage, ProfilePage, WomensPage, CartPage} from './Pages'
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
+import { useSelector } from "react-redux";
 import LoadAllProductsFirstTime from "./Components/Products/LoadAllProductsFirstTime";
 import DisplaySingleProduct from "./Components/Products/DisplaySingleProduct";
 import ScrollToTop from "./UI/ScrollToTop/ScrollToTop";
-import { useAppSelector } from "./Store/hooks";
 
 // Takes the responsibility of setting up routes, some of which depend on the login state
 function App() {
-  const isUserLoggedIn = useAppSelector(state => state.auth.isUserLoggedIn);
+  const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
 
   return (
     <div>

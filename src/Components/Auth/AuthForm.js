@@ -1,9 +1,9 @@
 import { useState, useRef, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
 import { instantiateDB } from '../../Store/CartStore';
-import { useAppDispatch } from '../../Store/hooks';
 import Button from '../../UI/Button/Button';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import ErrorModal from '../../UI/Modal/ErrorModal';
@@ -11,7 +11,7 @@ import cssClasses from './AuthForm.module.css';
 
 // Has a form for Login Or Signup
 // With the help of useHttp custom hook, it checks for credentials
-// The postFetchFunction helps in updating the redux DB using useAppDispatch()
+// The postFetchFunction helps in updating the redux DB using useDispatch()
 
 export default function AuthForm(){
   const [isLogin, setIsLogin] = useState(true);
@@ -22,7 +22,7 @@ export default function AuthForm(){
   const passwordRef = useRef();
   const formRef = useRef();
   const history = useHistory();
-  const dispather = useAppDispatch();
+  const dispather = useDispatch();
 
   // Function to be executed after fetch is satified
   const postFetchFunction = useCallback((data) =>{
