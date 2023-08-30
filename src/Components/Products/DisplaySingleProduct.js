@@ -1,7 +1,7 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { addItemToCart } from '../../Store/CartStore';
+import { useAppDispatch, useAppSelector } from '../../Store/hooks';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import StarRating from '../../UI/StarRating/StarRating';
@@ -14,12 +14,12 @@ import cssClasses from './DisplaySingleProduct.module.css'
 export default function DisplaySingleProduct() {
     const selectedItem = useParams();
     const history = useHistory();
-    const dispatcher = useDispatch();
-    const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
-    const email = useSelector(state => state.auth.email);
+    const dispatcher = useAppDispatch();
+    const isUserLoggedIn = useAppSelector(state => state.auth.isUserLoggedIn);
+    const email = useAppSelector(state => state.auth.email);
 
     // Get the selected product
-    const allProductsArray = useSelector(state => state.products.allProductsArray);
+    const allProductsArray = useAppSelector(state => state.products.allProductsArray);
     const currentProductArray = allProductsArray.filter(e => e.id === +selectedItem.singleProduct);
 
     // If a user enters a random id in the url, redirect to /shop/all
