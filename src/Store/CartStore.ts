@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { CartItem } from "./model";
 
 // Create a DB with a table 'cart' when user logs in
 export const instantiateDB = createAsyncThunk('cart/instantiateDB', async() =>{
@@ -12,7 +13,7 @@ export const instantiateDB = createAsyncThunk('cart/instantiateDB', async() =>{
 
 // Add an item to the cart
 // Two cases : Item already exists in the cart, hence increase by 1. Else, add it to the cart table
-export const addItemToCart = createAsyncThunk('cart/addItemToCart', async(obj) =>{
+export const addItemToCart = createAsyncThunk('cart/addItemToCart', async(obj: CartItem) =>{
     const itemToAdd = { id:obj.id,
                         title:obj.title,
                         email:obj.email,
@@ -25,8 +26,8 @@ export const addItemToCart = createAsyncThunk('cart/addItemToCart', async(obj) =
          const db =openRequest.result;
          const cartStore = db.transaction('cart', 'readwrite').objectStore('cart');
          const getObjRequest = cartStore.openCursor(itemToAdd.id);
-         getObjRequest.onsuccess = e => {
-             var cursor = e.target.result;      //getObjRequest.result
+         getObjRequest.onsuccess = (event:any) => {
+             var cursor = event!.target!.result;      //getObjRequest.result
 
             // If item already exists in the cart, update the count
             if (cursor){
@@ -45,7 +46,7 @@ export const addItemToCart = createAsyncThunk('cart/addItemToCart', async(obj) =
 });
 
 // Decrease the count of the item. If equal to 0 or removeItemCompletely is set (incase of delete item), remove it from cart table.
-export const removeItemFromCart = createAsyncThunk('cart/removeItemFromCart', async(obj) =>{
+export const removeItemFromCart = createAsyncThunk('cart/removeItemFromCart', async(obj: CartItem) =>{
     const itemToRemove = { id:obj.id,
                         title:obj.title,
                         email:obj.email,
@@ -60,8 +61,8 @@ export const removeItemFromCart = createAsyncThunk('cart/removeItemFromCart', as
         const cartStore = db.transaction('cart', 'readwrite').objectStore('cart');
 
         const getObjRequest = cartStore.openCursor(itemToRemove.id);
-        getObjRequest.onsuccess = e => {
-            let cursor = e.target.result;       //getObjRequest.result
+        getObjRequest.onsuccess = (event: any) => {
+            let cursor = event.target.result;       //getObjRequest.result
 
             if (cursor){
                 // Count is zero, remove the item || Delete button was clicked
@@ -88,60 +89,71 @@ export const emptyCart = createAsyncThunk('cart/emptyCart', async () =>{
     }
 });
 
+type InitialState = {
+    status: string
+}
+
+const initialState: InitialState = {
+    status: ''
+}
+
 const cartSlice = createSlice({
     name:'cart',
-    initialState:{'status':null},
+    initialState,
     reducers:{
 
         // When user logs out, delete the DB
         deleteDB(){
             indexedDB.deleteDatabase('userDB');
         },
-},
-  extraReducers:{
-        [instantiateDB.pending]:(state) =>{
+    },
+    extraReducers: (builder) => {
+
+        // instantiateDB
+        builder.addCase(instantiateDB.pending, (state, action) => {
             state.status = 'instantiateDB pending';
-        },
-        [instantiateDB.fulfilled]:(state) =>{
+        });
+        builder.addCase(instantiateDB.fulfilled, (state, action) => {
             state.status = 'instantiateDB fulfilled';
-        },
-        [instantiateDB.rejected]:(state) =>{
+        });
+        builder.addCase(instantiateDB.rejected, (state, action) => {
             state.status = 'instantiateDB rejected';
-        },
+        });
 
-        [addItemToCart.pending]:(state) =>{
+        // addItemToCart
+        builder.addCase(addItemToCart.pending, (state, action) => {
             state.status = 'addItemToCart pending';
-        },
-        [addItemToCart.fulfilled]:(state) =>{
+        });
+        builder.addCase(addItemToCart.fulfilled, (state, action) => {
             state.status = 'addItemToCart fulfilled';
-        },
-        [addItemToCart.rejected]:(state) =>{
+        });
+        builder.addCase(addItemToCart.rejected, (state, action) => {
             state.status = 'addItemToCart rejected';
-        },
+        });
 
-        [removeItemFromCart.pending]:(state) =>{
+        // removeItemFromCart
+        builder.addCase(removeItemFromCart.pending, (state, action) => {
             state.status = 'removeItemFromCart pending';
-        },
-        [removeItemFromCart.fulfilled]:(state) =>{
+        });
+        builder.addCase(removeItemFromCart.fulfilled, (state, action) => {
             state.status = 'removeItemFromCart fulfilled';
-        },
-        [removeItemFromCart.rejected]:(state) =>{
+        });
+        builder.addCase(removeItemFromCart.rejected, (state, action) => {
             state.status = 'removeItemFromCart rejected';
-        },
+        });
 
-        [emptyCart.pending]:(state) =>{
+        // emptyCart
+        builder.addCase(emptyCart.pending, (state, action) => {
             state.status = 'emptyCart pending';
-        },
-        [emptyCart.fulfilled]:(state) =>{
+        });
+        builder.addCase(emptyCart.fulfilled, (state, action) => {
             state.status = 'emptyCart fulfilled';
-        },
-        [emptyCart.rejected]:(state) =>{
+        });
+        builder.addCase(emptyCart.rejected, (state, action) => {
             state.status = 'emptyCart rejected';
-        },
-
-
-
+        });
     }
+
 });
 
 export const cartActions = cartSlice.actions;
