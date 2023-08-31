@@ -17,7 +17,7 @@ export const addItemToCart = createAsyncThunk('cart/addItemToCart', async(obj: C
     const itemToAdd = { id:obj.id,
                         title:obj.title,
                         email:obj.email,
-                        count:1,
+                        count:obj.count,
                         price:obj.price,
                         image: obj.image,
                         href:obj.href};

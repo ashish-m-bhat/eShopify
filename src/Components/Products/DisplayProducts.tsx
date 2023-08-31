@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import Card from '../../UI/Card/Card'
 import cssClasses from './DisplayProducts.module.css'
 import StarRating from '../../UI/StarRating/StarRating';
+import { Product } from '../../Store/model';
 
 // Function to sort the products
 // Takes in sortBy that tells the way to sort and productsToDisplay which is an array of products
-const sortProducts = (sortBy, productsToDisplay) =>{
+const sortProducts = (sortBy: string, productsToDisplay: Product[]) =>{
     switch(sortBy){
         case 'popularity':
                 productsToDisplay.sort((a,b) => b.rating.rate - a.rating.rate);
@@ -22,36 +23,43 @@ const sortProducts = (sortBy, productsToDisplay) =>{
     }
 }
 
-// When an item is clicked, redirect the location to display the single product
-// Takes in the id of the clicked item & the useHistory() variable since useHistory cannot be called outside of a React component
-const callDisplaySingleProduct = (id, history) =>{
-    history.push(`/shop/${id}`)
-}
-
 /* Generic Component to display the given products
  Returns
     1. A select tag for sorting
     2. A display message if Products are empty.
     3. Map through the array and display each product
 */
-export default function DisplayProducts(props) {
+
+interface Props {
+    productsToDisplay: Product[]
+};
+
+const DisplayProducts:React.FC<Props> = (props) => {
     const location = useLocation();
-    const history = useHistory();
-    const sortBy = new URLSearchParams(location.search).get('sort');
+    const history = useHistory<History>();
+    const sortBy = new URLSearchParams(location.search).get('sort') || '';
     const searchedProduct =  new URLSearchParams(location.search).get('search');
     const [callSpinner, setCallSpinner] = useState(true);
 
+    // When an item is clicked, redirect the location to display the single product
+    // Takes in the id of the clicked item & the useHistory() variable since useHistory cannot be called outside of a React component
+    const callDisplaySingleProduct = (id: Product['id']) =>{
+        history.push(`/shop/${id}`)
+    }
+
     // To set the sorting method when the user selects an option
-    const sortHandler = (event) =>{
+    const sortHandler = (event: FormEvent<HTMLSelectElement>) =>{
+        const targetValue = (event.target as HTMLSelectElement).value;
         // If a sort option has been clicked, remove the placeHolder
-        if(document.querySelector('#sortSelect').children[0].value === 'placeHolder'){
-            document.querySelector('#sortSelect').children[0].remove();
+        const sortSelectElement = document.querySelector('#sortSelect')
+        if((sortSelectElement?.children[0] as HTMLSelectElement).value === 'placeHolder'){
+            sortSelectElement?.children[0].remove();
         }
 
         // Append the selected sorting method value. Check if ?search=something exists
         // We can't directly append & or ?sort=popularity using location.search since if we change the sorting method, the method gets appended to the previous sorting method in the URL
         let pathToBePushed = `${location.pathname}?`; // /shop/all?
-        pathToBePushed += searchedProduct ? `search=${searchedProduct}&sort=${event.target.value}` : `sort=${event.target.value}`
+        pathToBePushed += searchedProduct ? `search=${searchedProduct}&sort=${targetValue}` : `sort=${targetValue}`
         // /shop/all?search=jacket&sort=popularity : /shop/all?sort=popularity
 
         history.push(pathToBePushed);
@@ -75,7 +83,7 @@ export default function DisplayProducts(props) {
         <>
             <div className={cssClasses.slct}>
                 <select onChange={(e) => sortHandler(e)} id="sortSelect">
-                    <option value="placeHolder" defaultValue={true}>Sort</option>
+                    <option value="placeHolder">Sort</option>
                     <option value="popularity">Sort By Popularity</option>
                     <option value="priceLowToHigh">Price Low To High</option>
                     <option value="priceHighToLow">Price High to Low</option>
@@ -84,7 +92,7 @@ export default function DisplayProducts(props) {
             <div className={cssClasses.productsSection}>
                 {props.productsToDisplay.map(eachProduct => {
                     return(
-                        <Card key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id, history)} className={cssClasses.eachProduct}>
+                        <Card key={eachProduct.id} onClick={() => callDisplaySingleProduct(eachProduct.id)} className={cssClasses.eachProduct}>
                             <p>{eachProduct.title} </p>
                             <img src={eachProduct.image} alt={eachProduct.title} height={"10vg"} width={"10vw"} loading="lazy"/>
                             <p>${eachProduct.price}</p>
@@ -109,3 +117,4 @@ How Sorting Works?
 7. Since the productsToDisplay array is a props, the component re renders
 
  */
+export default DisplayProducts;

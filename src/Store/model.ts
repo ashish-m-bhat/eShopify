@@ -18,7 +18,17 @@ export interface CartItem {
     email: string;
     price: number;
     image: string;
-    count: number;
     href: string;
+    count: number;
     removeItemCompletely?: boolean;
 }
+
+export interface OrderItem {
+    count: number;
+    email: string;
+    title: string;
+    id: number;
+    totalItemPrice: number;
+    totalBill?: number // If there are multiple items in an order, totalBill is added to the 1st item in the cart
+}
+

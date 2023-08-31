@@ -1,12 +1,18 @@
-import { Component } from "react";
-import PropTypes from 'prop-types';
+import { Component, ReactNode } from "react";
 
-export default class ErrorBoundary extends Component{
-    constructor(){
-        super();
-        this.state = {isError:false, message:''}
-    }
-    componentDidCatch(error){
+interface Props {
+    children: ReactNode;
+};
+
+interface State {
+    isError: boolean;
+    message: Error | null
+};
+
+export default class ErrorBoundary extends Component<Props, State>{
+    public state: State = { isError:false, message: null };
+
+    componentDidCatch(error: Error){
         this.setState({isError: true, message:error})
         console.log(error);
     }
@@ -16,8 +22,4 @@ export default class ErrorBoundary extends Component{
 
         return (this.props.children)
     }
-}
-
-ErrorBoundary.propTypes = {
-    children:PropTypes.node
 }

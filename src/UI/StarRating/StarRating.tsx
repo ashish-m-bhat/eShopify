@@ -1,7 +1,12 @@
 import React from 'react'
 import {FaStar} from 'react-icons/fa';
 
-export default function StarRating(props) {
+type Props = {
+  rating: number,
+  size: number
+}
+
+export default function StarRating(props: Props) {
   return (
     <div>
         {[...Array(5)].map((eachStar, index) => {

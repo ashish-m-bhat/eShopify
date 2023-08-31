@@ -8,27 +8,41 @@ import Card from '../../UI/Card/Card';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useAppDispatch, useAppSelector } from '../../Store/hooks';
+import { CartItem } from '../../Store/model';
+
+interface Props {
+  cartArray: Array<CartItem>
+};
 
 // Displays each product in the cart, received by ProfilePage
 // Also calls PlaceOrder that has a 'Place Order' buttton clicking which sends the order to the DB.
 
-export default function DisplayCart(props) {
+export default function DisplayCart(props: Props) {
   const dispatcher = useAppDispatch();
   const history = useHistory();
   const email = useAppSelector(state => state.auth.email);
 
   // Increase an item's count
-  const increaseItemInCartHandler = (productToIncrease) =>{
+  const increaseItemInCartHandler = (productToIncrease: CartItem) =>{
      dispatcher(addItemToCart({id:productToIncrease.id, title:productToIncrease.title, email:email, count:1, price:productToIncrease.price, image:productToIncrease.image, href:productToIncrease.href}));
 
   }
   // Decrease an item's count
-  const decreaseItemInCartHandler = (productToDecrease) =>{
+  const decreaseItemInCartHandler = (productToDecrease: CartItem) =>{
     dispatcher(removeItemFromCart({id:productToDecrease.id, title:productToDecrease.title, email:email, count:1, price:productToDecrease.price, image:productToDecrease.image, href:productToDecrease.href}));
  }
   // Remove an item from the cart. Pass the removeItemCompletely:true to the reducer
- const deleteItemInCartHandler = (productToRemove) =>{
-  dispatcher(removeItemFromCart({id:productToRemove.id, title:productToRemove.title, email:email, price:productToRemove.price, image:productToRemove.image, href:productToRemove.href, removeItemCompletely:true}));
+ const deleteItemInCartHandler = (productToRemove: CartItem) =>{
+  dispatcher(removeItemFromCart({
+    id:productToRemove.id,
+    title:productToRemove.title,
+    email:email,
+    price:productToRemove.price,
+    image:productToRemove.image,
+    href:productToRemove.href,
+    count: -1, // dummy value
+    removeItemCompletely:true
+  }));
 }
   return (
     <>
