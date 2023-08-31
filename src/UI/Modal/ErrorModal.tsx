@@ -3,7 +3,13 @@ import Button from "../Button/Button";
 import Card from "../Card/Card";
 import ErrorModalCssModule from "./ErrorModal.module.css";
 
-const Overlay = (props) => {
+interface Props {
+  title: string;
+  message: string;
+  closeErrorModal: () => void
+};
+
+const Overlay = (props: Props) => {
   return (
     <Card className={`${ErrorModalCssModule.modal}`}>
       <header className={ErrorModalCssModule.header}>
@@ -19,7 +25,7 @@ const Overlay = (props) => {
   );
 };
 
-const Backdrop = (props) => {
+const Backdrop = (props: { closeErrorModal: () => void}) => {
   return (
     <div
       className={ErrorModalCssModule.backdrop}
@@ -27,18 +33,18 @@ const Backdrop = (props) => {
     ></div>
   );
 };
-const ErrorModal = (props) => {
+const ErrorModal = (props: Props) => {
   return (
     <div>
       {reactDom.createPortal(
-        <Backdrop closeErrorModal={props.closeErrorModal} />, document.getElementById('BackdropModal')
+        <Backdrop closeErrorModal={props.closeErrorModal} />, document.getElementById('BackdropModal') as HTMLDivElement
       )}
       {reactDom.createPortal(
         <Overlay
           title={props.title}
           message={props.message}
           closeErrorModal={props.closeErrorModal}
-        />, document.getElementById('ErrorModal')
+        />, document.getElementById('ErrorModal') as HTMLDivElement
       )}
     </div>
   );

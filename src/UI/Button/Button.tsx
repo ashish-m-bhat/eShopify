@@ -1,9 +1,18 @@
 import cssClasses from "./Button.module.css";
 
-const Button = (props) => {
+interface Props {
+  onClick: (args: any) => void
+  children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  type?: string;
+  hidden?: boolean;
+};
+
+const Button = (props: Props) => {
   return (
     <div>
-      <button className={`${cssClasses.Button} ${props.className}`} onClick={props.onClick} disabled={props.disabled}>
+      <button className={`${cssClasses.Button} ${props.className}`} onClick={(args) => props.onClick(args)} disabled={props.disabled}>
         {props.children}
       </button>
     </div>

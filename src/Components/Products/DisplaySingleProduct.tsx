@@ -12,7 +12,7 @@ import cssClasses from './DisplaySingleProduct.module.css'
 // If the product isn't available ( when a user types manually the link in the address bar) ihe is redirected to the /shop/all page
 
 export default function DisplaySingleProduct() {
-    const selectedItem = useParams();
+    const selectedItem = useParams<{ singleProduct: string}>();
     const history = useHistory();
     const dispatcher = useAppDispatch();
     const isUserLoggedIn = useAppSelector(state => state.auth.isUserLoggedIn);
@@ -28,7 +28,6 @@ export default function DisplaySingleProduct() {
     if(!currentProductArray.length){
         if(allProductsArray.length)
             history.push('/shop/all');
-        return;
     }
     const selectedProduct = currentProductArray[0];
 
@@ -38,7 +37,15 @@ export default function DisplaySingleProduct() {
             history.push('/auth');
         }
         else{
-            const item = {id:+selectedProduct.id, email:email, title:selectedProduct.title, image:selectedProduct.image, href:history.location.pathname, price:selectedProduct.price};
+            const item = {
+                id:+selectedProduct.id,
+                email:email,
+                title:selectedProduct.title,
+                image:selectedProduct.image,
+                href:history.location.pathname,
+                price:selectedProduct.price,
+                count: 1
+            };
             dispatcher(addItemToCart(item));
         }
     }

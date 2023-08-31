@@ -3,19 +3,24 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp'
 import { emptyCart } from '../../Store/CartStore';
 import { useAppDispatch } from '../../Store/hooks';
+import { CartItem, OrderItem } from '../../Store/model';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import cssClasses from './DisplayCart.module.css';
 
+interface Props {
+    cartArray: Array<CartItem>;
+};
+
 // Gets the cartArray from DisplayCart and POSTs it to the Firebase DB
-export default function PlaceOrder(props) {
+export default function PlaceOrder(props: Props) {
     const [isLoading, setIsLoading] = useState(false);
     const history =useHistory();
     const dispatcher = useAppDispatch();
     let totalBill = 0;
     // Function to be excuted after order has been placed. Empty the cart and redirect to /profile
-    const postFetchFunction = useCallback((data) => {
+    const postFetchFunction = useCallback(() => {
         // Stop the Loading Spinner
         setIsLoading(false);
         alert("Order Placed");
@@ -25,15 +30,14 @@ export default function PlaceOrder(props) {
 
     const satisfyPostRequest =  useHttp(postFetchFunction);
 
-    const cartArrayToBeOrdered = props.cartArray.map(eachProduct => {
+    const cartArrayToBeOrdered: Array<OrderItem> = props.cartArray.map(eachProduct => {
                                     const {id, title, count, email, price} = eachProduct;
                                     const totalItemPrice = price*count;
                                     totalBill += totalItemPrice;
                                     return {id, email, title, count, totalItemPrice};
                                 });
-    totalBill = Math.round(totalBill);
-    cartArrayToBeOrdered.push({totalBill});
 
+    cartArrayToBeOrdered[0] = { ...cartArrayToBeOrdered[0], totalBill: Math.round(totalBill) };
     const placeOrderHandler = () =>{
         const requestConfig = {
             url:'https://react-http-bf239-default-rtdb.firebaseio.com/products.json',

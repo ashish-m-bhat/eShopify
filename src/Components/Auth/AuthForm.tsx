@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import useHttp from '../../CustomHooks/useHttp';
 import { authActions } from '../../Store/AuthStore';
@@ -18,14 +18,14 @@ export default function AuthForm(){
   const [isLoading, setIsLoading] = useState(false);
   const [callErrorModal, setCallErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const formRef = useRef();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const history = useHistory();
   const dispather = useAppDispatch();
 
   // Function to be executed after fetch is satified
-  const postFetchFunction = useCallback((data) =>{
+  const postFetchFunction = useCallback((data: any) =>{
 
     if(data?.error?.code === 400){
       if(data.error.message === "EMAIL_NOT_FOUND" ||  data.error.message === "INVALID_EMAIL"){
@@ -56,9 +56,9 @@ export default function AuthForm(){
 
   // Function to clear Form
   const clearForm =() =>{
-    emailRef.current.value = '';
-    passwordRef.current.value = '';
-    formRef.current.value = '';
+    emailRef.current!.value = '';
+    passwordRef.current!.value = '';
+    formRef.current!.value = '';
   }
 
   // useHttp custom hook returns a pointer to this satisfyRequest
@@ -66,7 +66,7 @@ export default function AuthForm(){
   const satisfyRequest =  useHttp(postFetchFunction);
 
   //Function to be executed when login/signup button is clicked
-  const loginSignupHandler=(event) =>{
+  const loginSignupHandler=(event: FormEvent): void =>{
     event.preventDefault();
 
     // Start the spinner
@@ -75,14 +75,14 @@ export default function AuthForm(){
     const apiKey='AIzaSyA357y-kI6368NgHXnMI5pW77y71GqpGuw';
     const url= isLogin?'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=':'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
 
-    const requestConfig = {url:url+apiKey, method:'POST', body:JSON.stringify({email:emailRef.current.value,password:passwordRef.current.value, returnSecureToken:true}), headers:{'Content-type':'application/json'}}
+    const requestConfig = {url:url+apiKey, method:'POST', body:JSON.stringify({email:emailRef.current!.value,password:passwordRef.current!.value, returnSecureToken:true}), headers:{'Content-type':'application/json'}}
 
     satisfyRequest(requestConfig);
     clearForm();
   }
 
   // Function to toggle between Login and Signup
-  const switchAuthModeHandler = () => {
+  const switchAuthModeHandler = (): void => {
     setIsLogin((prevState) => !prevState);
     clearForm();
   };
@@ -111,7 +111,7 @@ export default function AuthForm(){
         </div>
       </form>
       {isLoading && <LoadingSpinner />}
-      {callErrorModal && <ErrorModal closeErrorModal={()=>setCallErrorModal(false)} title={'Oops!'} message={errorMessage} />}
+      {callErrorModal && <ErrorModal closeErrorModal={()=>{setCallErrorModal(false)}} title={'Oops!'} message={errorMessage} />}
     </section>
   );
 };
