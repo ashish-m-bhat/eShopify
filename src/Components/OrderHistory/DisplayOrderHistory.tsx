@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { OrderItem } from "../../Store/model";
 import Card from "../../UI/Card/Card";
-import cssClasses, { totalBill } from './DisplayOrderHistory.module.css';
+import cssClasses from './DisplayOrderHistory.module.css';
 
 interface Props {
   orderHistoryArray: OrderItem[][];
