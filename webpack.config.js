@@ -20,11 +20,15 @@ resolve: {
     rules: [
       {
           test: /\.tsx?$/,
-          exclude: /node_modules/,
-          loader: 'ts-loader'
+          exclude: /node_modules(?!\/@ashish-m-bhat\/*)/,
+          loader: 'ts-loader',
+          options: {
+            "allowTsInNodeModules": true,
+          }
       },
       {
         test: /\.(js|jsx)$/,
+        exclude: /node_modules(?!\/@ashish-m-bhat\/*)/,
         use: 'babel-loader',
       },
   {
