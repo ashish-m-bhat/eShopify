@@ -32,19 +32,9 @@ resolve: {
         use: 'babel-loader',
       },
       {
-        test: /\.(less)$/,
-        use: [{
-            loader: 'style-loader' // creates style nodes from JS strings
-        }, {
-            loader: 'css-loader' // translates CSS into CommonJS
-        }, {
-            loader: 'less-loader' // compiles Less to CSS
-        }]
-    },
-  {
-   test: /\.(css|cdd.d.ts)$/,
-   use: ["style-loader", "css-modules-typescript-loader", "css-loader", "sass-loader"]
-  }
+        test: /\.(css|less)$/,
+        use: ["style-loader", "css-modules-typescript-loader", "css-loader", "less-loader"]
+      }
 ]},
  plugins: [htmlPlugin]
 };
