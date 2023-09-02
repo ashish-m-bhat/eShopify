@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import LoadingSpinner from '../../UI/LoadingSpinner/LoadingSpinner';
 import Card from '../../UI/Card/Card'
-import cssClasses from './DisplayProducts.module.css'
+import cssClasses from './DisplayProducts.module.less'
 import StarRating from '../../UI/StarRating/StarRating';
 import { Product } from '../../Store/model';
 

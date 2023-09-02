@@ -31,10 +31,10 @@ resolve: {
         exclude: /node_modules(?!\/@ashish-m-bhat\/*)/,
         use: 'babel-loader',
       },
-  {
-   test: /\.(css|cdd.d.ts)$/,
-   use: ["style-loader", "css-modules-typescript-loader", "css-loader"]
-  }
+      {
+        test: /\.(css|less)$/,
+        use: ["style-loader", "css-modules-typescript-loader", "css-loader", "less-loader"]
+      }
 ]},
  plugins: [htmlPlugin]
 };
